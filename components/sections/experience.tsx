@@ -5,7 +5,7 @@ const workExperience = [
   {
     title: "AI/ML Research Intern",
     company: "University of Southern California (USC)",
-    period: "January 2025 – April 2025",
+    period: "January 2025 - April 2025",
     location: "Los Angeles, CA",
     description: [
       "Contributed to ML models for detecting emotional disturbances and cognitive impairments by analyzing smartphone usage patterns, GPS, and environmental data (air quality, humidity, allergens)",
@@ -17,7 +17,7 @@ const workExperience = [
   {
     title: "Web Development Freelancer",
     company: "Freelancing",
-    period: "December 2024 – January 2025",
+    period: "December 2024 - January 2025",
     location: "Remote",
     description: [
       "Designed and developed a dynamic property listing website with advanced search capabilities and filters",
@@ -29,7 +29,7 @@ const workExperience = [
   {
     title: "Research Intern",
     company: "Indian Institute of Technology (IIT) Patna",
-    period: "September 2024 – December 2024",
+    period: "September 2024 - December 2024",
     location: "Patna, India",
     description: [
       "Conducted comparative analysis of Vision-Language Models (VLMs) and Large Language Models (LLMs)",
@@ -42,7 +42,7 @@ const workExperience = [
   {
     title: "AI/ML Intern",
     company: "Datamatics",
-    period: "June 2024 – August 2024",
+    period: "June 2024 - August 2024",
     location: "Mumbai, India",
     description: [
       "Built Agentic Process Automation (APA) systems using Langchain, Autogen, CrewAI, LaVague, Azure and OpenAI",
@@ -55,7 +55,7 @@ const workExperience = [
   {
     title: "Web Development Intern",
     company: "Centre for Development of Advanced Computing (CDAC)",
-    period: "December 2023 – May 2024",
+    period: "December 2023 - May 2024",
     location: "Mumbai, India",
     description: [
       "Developed an interactive virtual dice simulator using ReactJS, Material UI, JavaScript, Plotly, and CSS",

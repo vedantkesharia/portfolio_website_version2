@@ -3,6 +3,7 @@ import type React from "react"
 import { useState, useRef } from "react"
 import { Mail, Linkedin, Github } from "lucide-react"
 import emailjs from '@emailjs/browser'
+import { AuroraBackground } from "@/components/ui/aurora-background"
 
 export function ContactSection() {
   const [buttonText, setButtonText] = useState<string>("Send Message")
@@ -115,7 +116,8 @@ export function ContactSection() {
   }
 
   return (
-    <section id="contact" className="py-20">
+    <section id="contact" className="py-20 relative overflow-hidden">
+       <AuroraBackground className="absolute inset-0" />
       <div className="max-w-4xl mx-auto px-6">
         <h2 className="text-5xl font-bold text-center mb-16 bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">
           Get In Touch
