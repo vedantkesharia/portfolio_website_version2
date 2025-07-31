@@ -116,7 +116,7 @@ const allProjects = [
     description:
       "A full stack web application where users can create and showcase their own personalized blogs using Reactjs, NodeJs, ExpressJs, Bootstrap.",
     tech: ["React", "Node.js", "Express", "Bootstrap", "MongoDB"],
-    image: "/img/BlogNest_img.jpeg",
+    image: "/img/blogNest_img.jpeg",
     demoLink: "https://github.com/vedantkesharia/BlogNest/tree/master",
     githubLink: "https://github.com/vedantkesharia/BlogNest/tree/master",
   },
