@@ -98,7 +98,7 @@ export function HeroSection() {
               <Mail className="w-8 h-8 text-gray-400 group-hover:text-white transition-colors duration-300" />
             </a>
             <a
-              href="https://leetcode.com/your-username"
+              href="https://leetcode.com/keshariavedant"
               target="_blank"
               rel="noopener noreferrer"
               className="group cursor-pointer transform hover:scale-110 transition-all duration-300"
