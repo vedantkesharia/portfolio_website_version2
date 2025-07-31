@@ -28,8 +28,8 @@ const researchPapers = [
     tech: ["NLP", "TF-IDF", "LSTM", "Doc2Vec"],
   },
   {
-    title: "Enhanced Nighttime Crime Surveillance Using Federated Learning",
-    journal: "6th Congress on Intelligent Systems (CIS 2025)",
+    title: "Enhanced Nighttime Crime Surveillance Using Federated Learning: A Technical Evaluation of Aggregation Methods",
+    journal: "4th International Conference on Advances in Data-driven Computing and Intelligent Systems (ADCIS 2025)",
     status: "Under Review",
     year: "2025",
     description: "Federated learning for crime detection with 90-95% accuracy across aggregation methods.",
