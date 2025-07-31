@@ -57,9 +57,13 @@ export function ResearchSection() {
   return (
     <section id="research" className="py-20">
       <div className="max-w-6xl mx-auto px-6">
-        <h2 className="text-5xl font-bold text-center mb-16 bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">
+        {/* <h2 className="text-5xl font-bold text-center mb-16 bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">
           Research & Publications
+        </h2> */}
+         <h2 className="text-6xl font-light text-center mb-4 bg-gradient-to-r from-white via-gray-200 to-gray-400 bg-clip-text text-transparent">
+            Research & Publications
         </h2>
+          <div className="w-96 h-px bg-gradient-to-r from-transparent via-white to-transparent mx-auto mb-20" />
         <div className="grid md:grid-cols-2 gap-8">
           {researchPapers.map((paper, index) => (
             <motion.div

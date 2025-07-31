@@ -49,11 +49,17 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
                   {/* {getYearFromPeriod(item.period)} */}
                   {item.period.split(" - ")[0]}
                 </h3>
-                <motion.div
+                {/* <motion.div
                   initial={{ opacity: 0, y: 50 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="bg-white dark:bg-neutral-900 p-8 rounded-3xl shadow-lg border border-neutral-200 dark:border-neutral-800"
+                  className="bg-white/10 dark:bg-white/5 backdrop-blur-sm p-8 rounded-3xl shadow-xl border border-white/20 dark:border-white/10 hover:bg-white/20 dark:hover:bg-white/10 transition-all duration-300"
+                > */}
+                 <motion.div
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  className="bg-white/10 dark:bg-white/5 backdrop-blur-sm p-8 rounded-3xl shadow-xl border border-white/20 dark:border-white/10 hover:bg-white/20 dark:hover:bg-white/10 transition-all duration-700 ease-out"
                 >
                   <div className="space-y-4">
                     <div>

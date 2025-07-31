@@ -71,9 +71,13 @@ export function ExperienceSection() {
   return (
     <section id="experience" className="py-20 bg-gray-900/30">
       <div className="max-w-6xl mx-auto px-6">
-        <h2 className="text-5xl font-bold text-center mb-16 bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">
-          Work Experience
+        <h2 className="text-6xl font-light text-center mb-6 bg-gradient-to-r from-white via-gray-200 to-gray-400 bg-clip-text text-transparent">
+            Work Experience
         </h2>
+          <div className="w-96 h-px bg-gradient-to-r from-transparent via-white to-transparent mx-auto" />
+        {/* <h2 className="text-5xl font-bold text-center mb-16 bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">
+          Work Experience
+        </h2> */}
         <Timeline data={workExperience} />
       </div>
     </section>
