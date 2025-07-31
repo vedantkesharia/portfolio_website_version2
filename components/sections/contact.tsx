@@ -1,7 +1,7 @@
 "use client"
 import type React from "react"
 import { useState, useRef } from "react"
-import { Mail, Linkedin, Github } from "lucide-react"
+import { Mail, Linkedin, Github,Code } from "lucide-react"
 import emailjs from '@emailjs/browser'
 import { AuroraBackground } from "@/components/ui/aurora-background"
 
@@ -126,7 +126,7 @@ export function ContactSection() {
           <div className="space-y-6">
             <h3 className="text-2xl font-semibold mb-6 text-white">Let's Connect</h3>
             <p className="text-gray-300 leading-relaxed">
-              I'm always interested in discussing new opportunities, innovative projects, and collaborations in AI/ML,
+              I'm always interested in discussing new opportunities, innovative projects, and collaborations in AI/ML, software development,
               full-stack development, and research.
             </p>
             <div className="space-y-4">
@@ -142,12 +142,12 @@ export function ContactSection() {
               <div className="flex items-center space-x-4">
                 <Linkedin className="w-6 h-6 text-gray-400 flex-shrink-0" />
                 <a 
-                  href="https://linkedin.com/in/vedant-kesharia" 
+                  href="https://linkedin.com/in/vedant-kesharia-556603235" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="text-gray-300 hover:text-white transition-colors duration-300 cursor-pointer"
                 >
-                  linkedin.com/in/vedant-kesharia
+                  linkedin.com/in/vedant-kesharia-556603235
                 </a>
               </div>
               <div className="flex items-center space-x-4">
@@ -159,6 +159,17 @@ export function ContactSection() {
                   className="text-gray-300 hover:text-white transition-colors duration-300 cursor-pointer"
                 >
                   github.com/vedantkesharia
+                </a>
+              </div>
+              <div className="flex items-center space-x-4">
+                <Code className="w-6 h-6 text-gray-400 flex-shrink-0" />
+                <a 
+                  href="https://leetcode.com/u/keshariavedant" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-gray-300 hover:text-white transition-colors duration-300 cursor-pointer"
+                >
+                  leetcode.com/u/keshariavedant
                 </a>
               </div>
             </div>

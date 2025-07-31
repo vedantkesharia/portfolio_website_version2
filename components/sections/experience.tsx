@@ -35,7 +35,6 @@ const workExperience = [
       "Conducted comparative analysis of Vision-Language Models (VLMs) and Large Language Models (LLMs)",
       "Assessed model effectiveness in interpreting region-specific sports data from India and France",
       "Employed rule-based, image-based, and history-based methodologies to evaluate model performance",
-      "Research paper submitted to 47th European Conference on Information Retrieval (ECIR) for review",
     ],
     technologies: ["Python", "VLMs", "LLMs", "Computer Vision", "NLP", "Research Methodologies"],
   },

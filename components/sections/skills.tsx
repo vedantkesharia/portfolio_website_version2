@@ -9,14 +9,14 @@ const skills = [
   {
     name: "Full-Stack Development",
     icon: <Code className="w-10 h-10 text-white" />,
-    tech: ["React", "Next.js", "Node.js", "Express", "MongoDB", "TypeScript"],
+    tech: ["React.js", "Next.js", "Node.js", "Express", "MongoDB", "Firebase", "Javascript", "TypeScript", "Tailwind CSS", "PHP", "MySQL", "HTML", "CSS"],
     description: "End-to-end web application development with modern frameworks and best practices.",
     revealText: "Building scalable applications from frontend to backend with cutting-edge technologies.",
   },
   {
     name: "AI/ML Engineering",
     icon: <Brain className="w-10 h-10 text-white" />,
-    tech: ["TensorFlow", "PyTorch", "NLP", "Computer Vision", "GANs", "Neural Networks"],
+    tech: ["TensorFlow", "PyTorch", "NLP", "Computer Vision", "GANs", "Neural Networks", "Autogen", "LangChain", "RAG", "CrewAI", "LaVague", "Agentic AI"],
     description: "Advanced machine learning and AI solutions for real-world problems.",
     revealText: "Developing intelligent systems using deep learning, NLP, and computer vision techniques.",
   },
@@ -37,7 +37,7 @@ const skills = [
   {
     name: "Data Science",
     icon: <Database className="w-10 h-10 text-white" />,
-    tech: ["Python", "Pandas", "NumPy", "Matplotlib", "Seaborn", "Jupyter"],
+    tech: ["Python", "SQL", "Pandas", "NumPy", "Matplotlib", "Seaborn", "Jupyter"],
     description: "Data analysis, visualization, and statistical modeling.",
     revealText: "Extracting insights from complex datasets using advanced analytics and visualization.",
   },

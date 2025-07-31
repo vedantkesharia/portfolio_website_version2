@@ -4,11 +4,27 @@ import { motion } from "framer-motion"
 
 const researchPapers = [
   {
-    title: "Comprehensive NLP System for Research Paper Discovery and Similarity Analysis",
-    journal: "ICCCDS 2025",
-    status: "Accepted",
+    title: "Adaptive Web Accessing Tool for Visually Impaired People with Explainable AI",
+    journal: "International journal Educational Administration: Theory and Practice",
+    status: "Published",
+    year: "2024",
+    description: "Built a multilingual voice assistant for the visually impaired with personalized content delivery using ML and NLP.",
+    tech: ["NLP", "TF-IDF", "Explainable AI", "Web Accessibility", "Voice Assistant"],
+  },
+   {
+    title: "Detection of Fake Online Products Using Unsupervised GAN with Grad-CAM Visualization",
+    journal: "Presented at BIDA 2025; to be published in Springer’s “Smart Innovation, Systems and Technologies” series.",
+    status: "Presented",
     year: "2025",
-    description: "NLP system using TF-IDF, LSA, Doc2Vec with LSTM-based citation prediction.",
+    description: "Developed a GAN-based framework with Grad-CAM to detect fake online products, achieving high accuracy and explainability.",
+    tech: ["GANs", "Computer Vision", "Grad-CAM", "Explainable AI"],
+   },
+  {
+    title: "Comprehensive NLP System for Research Paper Discovery and Similarity Analysis",
+    journal: "International Conference on Communication, Computing, and Data Security (ICCCDS 2025)",
+    status: "Presented",
+    year: "2025",
+    description: "Built an NLP-based system to compare research papers, extract key entities, predict citation impact with LSTM, and rank relevance by abstract similarity.",
     tech: ["NLP", "TF-IDF", "LSTM", "Doc2Vec"],
   },
   {
@@ -29,28 +45,29 @@ const researchPapers = [
   },
   {
     title: "AdversaMark: Robust Digital Watermarking through GANs",
-    journal: "SCIS 2025",
+    journal: "2nd International Conference on Sustainable Computing and Intelligent Systems (SCIS 2025)",
     status: "Under Review",
     year: "2025",
     description: "Generative adversarial networks for robust digital watermarking solutions.",
     tech: ["GANs", "Digital Watermarking", "Security"],
   },
   {
-    title: "Optimized ECG-Based Detection of Hypertensive Heart Disease",
+    title: "Optimized ECG-Based Detection of Hypertensive Heart Disease Using Federated Machine Learning",
     journal: "5th IEEE ASIANCON 2025",
     status: "Under Review",
     year: "2025",
     description: "Federated machine learning approach for ECG-based hypertensive heart disease detection.",
     tech: ["Federated Learning", "ECG Analysis", "Healthcare AI"],
   },
-  {
-    title: "Vision-Language Models vs Large Language Models Analysis",
-    journal: "47th European Conference on Information Retrieval (ECIR)",
+   {
+    title: "Enhancing Hypertensive Heart Disease Detection Through ECG Signal Optimization",
+    journal: "7th International Conference on Communication and Intelligent Systems (ICCIS 2025)",
     status: "Under Review",
     year: "2025",
-    description: "Comparative analysis of VLMs and LLMs for region-specific sports data interpretation.",
-    tech: ["VLMs", "LLMs", "Computer Vision", "Sports Analytics"],
-  },
+    description: "Developed an image-to-signal ECG pipeline using ML/DL for automated hypertensive heart disease detection from paper-based records.",
+    tech: ["ECG Image Processing", "Signal Extraction", "Hypertensive Heart Disease", "Machine Learning", "Deep Learning"],
+  }
+  
 ]
 
 export function ResearchSection() {
@@ -81,6 +98,8 @@ export function ResearchSection() {
                 <span
                   className={`px-3 py-1 rounded-full text-xs ${
                     paper.status === "Published"
+                      ? "bg-green-900/50 text-green-300 border border-green-800"
+                      : paper.status === "Presented"
                       ? "bg-green-900/50 text-green-300 border border-green-800"
                       : paper.status === "Accepted"
                         ? "bg-blue-900/50 text-blue-300 border border-blue-800"

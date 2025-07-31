@@ -501,7 +501,7 @@ export function AboutSection() {
         >
           <SpecialStatsCard
             value="8"
-            label="Research Papers Published"
+            label="My Research Papers"
             icon={<BookOpen className="w-8 h-8" />}
             delay={1.3}
             isLoading={false}
@@ -588,7 +588,7 @@ export function AboutSection() {
                           <div className="flex items-center gap-2">
                             <div className="w-2 h-2 rounded-full bg-white/60"></div>
                             <p className="text-gray-300 text-sm font-medium">
-                              8 Published Papers • International Journals
+                              8 Research Papers • International Journals
                             </p>
                           </div>
                           <div className="flex items-center gap-2">

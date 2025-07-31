@@ -2,42 +2,47 @@
 import { useState } from "react"
 import { ExternalLink, Github, ChevronDown } from "lucide-react"
 import { motion } from "framer-motion"
+import cdac_image from "../../public/img/cdac_img.jpeg"
+
 
 const allProjects = [
   // First batch - main projects
   {
-    title: "CareerMatic - RPA Job Matching",
+    title: "CareerMatic",
     description:
       "1st place at IIT Bombay Techfest. Automated job matching system with resume parsing, AI-based role matching, and personalized email delivery.",
     tech: ["Python", "NLP", "RPA", "ML", "Web Scraping", "Email API"],
     image: "/placeholder.svg?height=200&width=400&text=CareerMatic+RPA+Job+Matching",
-    demoLink: "https://vedantkeshariaportfolio.netlify.app/#project",
-    githubLink: "https://github.com/vedantkesharia/vedant1_cdac/tree/master",
+    achievement: "🏆 1st Place IIT Bombay",
+    // demoLink: "https://vedantkeshariaportfolio.netlify.app/#project",
+    // githubLink: "https://github.com/vedantkesharia/vedant1_cdac/tree/master",
   },
   {
-    title: "EcoCarrier - ESG Analytics Platform",
+    title: "EcoCarrier",
     description:
       "Smart India Hackathon 2024 Finalist. Comprehensive ESG platform with IoT leak detection, MERN stack, Flutter app, and multilingual RAG chatbot.",
     tech: ["MERN Stack", "Flutter", "IoT", "AWS", "ML", "RAG"],
-    image: "/placeholder.svg?height=200&width=400&text=EcoCarrier+ESG+Analytics+Platform",
-    demoLink: "https://vedantkeshariaportfolio.netlify.app/#project",
-    githubLink: "https://github.com/vedantkesharia",
+    image: "/img/EcoCarrier.png",
+    achievement: "🏅 SIH 2024 Finalist",
+    demoLink: "https://github.com/vedantkesharia/sih_2024_hackstreet_boys",
+    githubLink: "https://github.com/vedantkesharia/sih_2024_hackstreet_boys",
   },
   {
     title: "AgroServe - P2P Lending Platform",
     description:
       "Fintech Domain Prize Winner at SPIT Hackathon. Multilingual platform for secure farmer lending with ML-based crop analysis and credit scoring.",
     tech: ["Flutter", "MERN Stack", "ML", "Credit Analysis", "Multilingual"],
-    image: "/placeholder.svg?height=200&width=400&text=AgroServe+P2P+Lending+Platform",
-    demoLink: "https://vedantkeshariaportfolio.netlify.app/#project",
-    githubLink: "https://github.com/vedantkesharia",
+    image: "/img/AgroServe.png",
+    achievement: "🏆 Fintech Prize Winner",
+    demoLink: "https://drive.google.com/file/d/1JdI3wCdRISMpE0WeiPwMkNn72MKIH85L/view",
+    githubLink: "https://github.com/vedantkesharia/spit_hackathon",
   },
   {
     title: "Virtual Dice Simulator",
     description:
       "Virtual lab for students to explain them probability using dice simulation with real-time graph updates and interactive learning.",
     tech: ["ReactJS", "Material UI", "JavaScript", "Plotly", "CSS"],
-    image: "/placeholder.svg?height=200&width=400&text=Virtual+Dice+Simulator",
+    image: "/img/cdac_img.jpeg",
     demoLink: "https://github.com/vedantkesharia/vedant1_cdac/tree/master",
     githubLink: "https://github.com/vedantkesharia/vedant1_cdac/tree/master",
   },
@@ -46,18 +51,18 @@ const allProjects = [
     description:
       "An AI web application with functions like code/music/video/image generation from any text using advanced AI models.",
     tech: ["Next.js", "OpenAI", "React", "TypeScript", "AI APIs"],
-    image: "/placeholder.svg?height=200&width=400&text=BrainAI+Generation+Platform",
+    image: "/img/brainai_img.jpeg",
     demoLink: "https://brainai.vercel.app/",
-    githubLink: "https://github.com/vedantkesharia",
+    githubLink: "https://github.com/vedantkesharia/Brainai",
   },
   {
     title: "SocialBay",
     description:
       "This is a social media website made by tools like MUI, ReactJs, NodeJs, ExpressJs, MongoDB with real-time features.",
     tech: ["React", "Node.js", "Express", "MongoDB", "Material UI"],
-    image: "/placeholder.svg?height=200&width=400&text=SocialBay+Social+Media",
+    image: "/img/SocialBay_img.jpeg",
     demoLink: "http://thesocialbay.netlify.app/",
-    githubLink: "https://github.com/vedantkesharia",
+    githubLink: "https://github.com/vedantkesharia/SocialBay",
   },
 
   // Second batch
@@ -66,52 +71,52 @@ const allProjects = [
     description:
       "Note taking application using ReactJs, HTML, Bootstrap, NodeJs, ExpressJs, MongoDB, Rest API, jwt authentication etc...",
     tech: ["React", "Node.js", "Express", "MongoDB", "JWT", "Bootstrap"],
-    image: "/placeholder.svg?height=200&width=400&text=EverNote+Note+Taking",
+    image: "/img/evernote_img.jpeg",
     demoLink: "https://myevernotes.netlify.app/",
-    githubLink: "https://github.com/vedantkesharia",
+    githubLink: "https://github.com/vedantkesharia/iNotebook",
   },
   {
     title: "VideoVerse",
     description:
       "Youtube clone using API fetching with video search play functionality using ReactJs, Material UI with responsive design.",
     tech: ["React", "Material UI", "YouTube API", "JavaScript"],
-    image: "/placeholder.svg?height=200&width=400&text=VideoVerse+YouTube+Clone",
+    image: "/img/videoverse_img.jpeg",
     demoLink: "http://thevideoverse.netlify.app/",
-    githubLink: "https://github.com/vedantkesharia",
+    githubLink: "https://github.com/vedantkesharia/VideoVerse_youtube_clone",
   },
   {
     title: "CodeSync",
     description:
       "A code sharing web application where users can save and share their code snippets using NextJs, TailwindCSS, MongoDB, NodeJS.",
     tech: ["Next.js", "TailwindCSS", "MongoDB", "Node.js"],
-    image: "/placeholder.svg?height=200&width=400&text=CodeSync+Code+Sharing",
+    image: "/img/codesync_img.jpg",
     demoLink: "https://codesyncweb.vercel.app/",
-    githubLink: "https://github.com/vedantkesharia",
+    githubLink: "https://github.com/vedantkesharia/CodeSync",
   },
   {
     title: "CodeLockr - NPM Package",
     description:
       "Codelockr: npm package providing classical ciphers for easy cryptography using JavaScript, TypeScript and React.",
     tech: ["JavaScript", "TypeScript", "NPM", "Cryptography"],
-    image: "/placeholder.svg?height=200&width=400&text=CodeLockr+NPM+Package",
+    image: "/img/codelockr_img.jpg",
     demoLink: "https://www.npmjs.com/package/codelockr",
-    githubLink: "https://github.com/vedantkesharia",
+    githubLink: "https://github.com/vedantkesharia/codelockr-npm-package",
   },
   {
     title: "Flexibble",
     description:
       "Full stack web application to showcase and share your projects, Tech: NextJS, HTML, Tailwind CSS, cloudinary, NodeJs.",
     tech: ["Next.js", "TailwindCSS", "Cloudinary", "Node.js"],
-    image: "/placeholder.svg?height=200&width=400&text=Flexibble+Project+Showcase",
+    image: "/img/flexibble_img.jpeg",
     demoLink: "https://flexibble-flax.vercel.app/",
-    githubLink: "https://github.com/vedantkesharia",
+    githubLink: "https://github.com/vedantkesharia/Flexibble",
   },
   {
     title: "BlogNest",
     description:
       "A full stack web application where users can create and showcase their own personalized blogs using Reactjs, NodeJs, ExpressJs, Bootstrap.",
     tech: ["React", "Node.js", "Express", "Bootstrap", "MongoDB"],
-    image: "/placeholder.svg?height=200&width=400&text=BlogNest+Blogging+Platform",
+    image: "/img/BlogNest_img.jpeg",
     demoLink: "https://github.com/vedantkesharia/BlogNest/tree/master",
     githubLink: "https://github.com/vedantkesharia/BlogNest/tree/master",
   },
@@ -122,16 +127,16 @@ const allProjects = [
     description:
       "iPhone landing site using GSAP animation, threejs, HTML with stunning 3D animations and smooth scrolling effects.",
     tech: ["GSAP", "Three.js", "HTML", "CSS", "JavaScript"],
-    image: "/placeholder.svg?height=200&width=400&text=iPhone+Landing+Site",
+    image: "/img/iphone_site_img.jpeg",
     demoLink: "http://iphonelandingsite.netlify.app/",
-    githubLink: "https://github.com/vedantkesharia",
+    githubLink: "https://github.com/vedantkesharia/Iphone_landingpage",
   },
   {
     title: "vChat",
     description:
       "A real time chatting application using ReactJs, CSS, HTML, Firebase with instant messaging and user authentication.",
     tech: ["React", "Firebase", "CSS", "HTML", "Real-time"],
-    image: "/placeholder.svg?height=200&width=400&text=vChat+Real+Time+Chat",
+    image: "/img/vchat_img.jpeg",
     demoLink: "https://github.com/vedantkesharia/vchat/tree/master",
     githubLink: "https://github.com/vedantkesharia/vchat/tree/master",
   },
@@ -140,7 +145,7 @@ const allProjects = [
     description:
       "A website that provides latest news cards to the user API fetching, ReactJs, HTML, Bootstrap, javascript etc...",
     tech: ["React", "News API", "Bootstrap", "JavaScript"],
-    image: "/placeholder.svg?height=200&width=400&text=NewsToday+News+App",
+    image: "/img/newstoday_img.jpeg",
     demoLink: "https://github.com/vedantkesharia/News-App_newstoday/tree/master",
     githubLink: "https://github.com/vedantkesharia/News-App_newstoday/tree/master",
   },
@@ -266,11 +271,11 @@ export function ProjectsSection() {
         )}
 
         {/* Projects Counter */}
-        <div className="text-center mt-8">
+        {/* <div className="text-center mt-8">
           <p className="text-gray-400 text-sm">
             Showing {visibleProjects} of {allProjects.length} projects
           </p>
-        </div>
+        </div> */}
       </div>
     </section>
   )
