@@ -398,11 +398,25 @@ export function AboutSection() {
                     whileHover={{ scale: 1.02, y: -2 }}
                     whileTap={{ scale: 0.98 }}
                     className="group relative px-10 py-4 bg-white text-black font-medium overflow-hidden transition-all duration-300 rounded-sm"
+                    onClick={() =>
+                      window.open(
+                        "https://drive.google.com/file/d/19bceCdlZaAh3l5y6ir7KcwaKkutvaxD6/view?usp=sharing",
+                        "_blank"
+                      )
+                    }
                   >
                     <div className="absolute inset-0 bg-gradient-to-r from-gray-100 to-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                    {/* <span className="relative z-10 tracking-wide">
+                    <span className="relative z-10 tracking-wide">
                       Download Resume
-                    </span> */}
+                    </span>
+                  </motion.button>
+                  {/* <motion.button
+                    whileHover={{ scale: 1.02, y: -2 }}
+                    whileTap={{ scale: 0.98 }}
+                    className="group relative px-10 py-4 bg-white text-black font-medium overflow-hidden transition-all duration-300 rounded-sm"
+                  >
+                    <div className="absolute inset-0 bg-gradient-to-r from-gray-100 to-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    
                     <button
                       onClick={() =>
                         window.open(
@@ -415,8 +429,11 @@ export function AboutSection() {
                         Download Resume
                       </span>
                     </button>
-                  </motion.button>
+                  </motion.button> */}
 
+                  {/* <span className="relative z-10 tracking-wide">
+                      Download Resume
+                    </span> */}
                   <motion.button
                     whileHover={{ scale: 1.02, y: -2 }}
                     whileTap={{ scale: 0.98 }}
