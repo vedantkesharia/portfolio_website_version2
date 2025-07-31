@@ -71,7 +71,7 @@ const allProjects = [
     description:
       "Note taking application using ReactJs, HTML, Bootstrap, NodeJs, ExpressJs, MongoDB, Rest API, jwt authentication etc...",
     tech: ["React", "Node.js", "Express", "MongoDB", "JWT", "Bootstrap"],
-    image: "/img/evernote_img.jpeg",
+    image: "/img/Evernote_img.jpeg",
     demoLink: "https://myevernotes.netlify.app/",
     githubLink: "https://github.com/vedantkesharia/iNotebook",
   },
