@@ -237,7 +237,7 @@ export function ProjectsSection() {
         <h2 className="text-6xl font-light text-center mb-4 bg-gradient-to-r from-white via-gray-200 to-gray-400 bg-clip-text text-transparent">
             Featured Projects
         </h2>
-          <div className="w-96 h-px bg-gradient-to-r from-transparent via-white to-transparent mx-auto mb-20" />
+          <div className="w-80 h-px bg-gradient-to-r from-transparent via-white to-transparent mx-auto mb-20" />
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {allProjects.slice(0, visibleProjects).map((project, index) => (
