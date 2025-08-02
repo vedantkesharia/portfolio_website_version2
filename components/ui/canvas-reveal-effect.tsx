@@ -220,7 +220,7 @@ export const Card = ({
                     key={index}
                     initial={isMobile ? { opacity: 0, scale: 0.8 } : {}}
                     animate={isMobile && showContent ? { opacity: 1, scale: 1 } : {}}
-                    transition={{ delay: index * 0.05, duration: 0.3 }}
+                    transition={{ delay: index * 0.01, duration: 0.3 }}
                     className="px-3 py-1 bg-white/20 text-xs rounded-full border border-white/30 text-white"
                   >
                     {tech}
