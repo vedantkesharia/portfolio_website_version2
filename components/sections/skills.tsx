@@ -1,3 +1,4 @@
+//works but phone hover issue 
 "use client"
 import { Code, BookOpen, Brain, Database, Cloud, Zap } from "lucide-react"
 
