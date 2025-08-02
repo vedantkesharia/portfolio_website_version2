@@ -273,6 +273,7 @@ const AnimatePresence = ({ children }: { children: React.ReactNode }) => {
 
 
 
+
 // "use client"
 // import { Code, BookOpen, Brain, Database, Cloud, Zap } from "lucide-react"
 // import { cn } from "@/lib/utils"
