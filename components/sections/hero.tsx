@@ -119,8 +119,6 @@ export function HeroSection() {
 
 
 
-
-
 // "use client"
 // import { useState, useEffect } from "react"
 // import { ChevronDown, Github, Linkedin, Mail } from "lucide-react"
