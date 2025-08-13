@@ -51,6 +51,7 @@ const skills = [
   },
 ]
 
+
 export function SkillsSection() {
   return (
     <section id="skills" className="py-20 bg-gray-900/30">

@@ -629,6 +629,7 @@ export function AboutSection() {
           </div>
         </motion.div>
 
+
         {/* Bottom Accent */}
         <motion.div
           initial={{ opacity: 0, scaleX: 0 }}
