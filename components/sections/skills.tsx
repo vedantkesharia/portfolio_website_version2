@@ -38,7 +38,7 @@ const skills = [
   {
     name: "Data Science",
     icon: <Database className="w-10 h-10 text-white" />,
-    tech: ["Python", "SQL", "Pandas", "NumPy", "Matplotlib", "Seaborn", "Jupyter"],
+    tech: ["Python", "SQL", "R", "Pandas", "NumPy", "Matplotlib", "Seaborn", "Jupyter"],
     description: "Data analysis, visualization, and statistical modeling.",
     revealText: "Extracting insights from complex datasets using advanced analytics and visualization.",
   },
