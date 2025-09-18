@@ -24,7 +24,7 @@ const allProjects = [
     tech: ["MERN Stack", "Flutter", "IoT", "AWS", "ML", "RAG"],
     image: "/img/EcoCarrier.png",
     achievement: "🏅 SIH 2024 Finalist",
-    demoLink: "https://github.com/vedantkesharia/sih_2024_hackstreet_boys",
+    demoLink: "https://www.figma.com/design/r9bPJIrrxuSTku8fojQFjT/GreenLink_SIH?node-id=0-1&p=f&t=j1XiXTAh5x5PNUUn-0",
     githubLink: "https://github.com/vedantkesharia/sih_2024_hackstreet_boys",
   },
   {
