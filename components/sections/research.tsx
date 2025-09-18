@@ -30,7 +30,7 @@ const researchPapers = [
   {
     title: "Enhanced Nighttime Crime Surveillance Using Federated Learning: A Technical Evaluation of Aggregation Methods",
     journal: "4th International Conference on Advances in Data-driven Computing and Intelligent Systems (ADCIS 2025)",
-    status: "Accepted",
+    status: "Presented",
     year: "2025",
     description: "Federated learning for crime detection with 90-95% accuracy across aggregation methods.",
     tech: ["Federated Learning", "Computer Vision", "Privacy"],

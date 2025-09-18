@@ -28,6 +28,15 @@ const allProjects = [
     githubLink: "https://github.com/vedantkesharia/sih_2024_hackstreet_boys",
   },
   {
+    title: "RestroGuard",
+    description:
+      "RestroGuard is an AI tool that detects anomalies in restaurant transactions, generates reports, and uses AI calls with transcribed summaries for quick resolution.",
+    tech: ["NextJs", "Flutter", "MERN Stack", "ML", "RAG", "LLMs", "Automation"],
+    image: "/img/codeshashtra_img.png",
+    demoLink: "https://drive.google.com/file/d/1-grJpwME78HN3jAvIs3xVybdHtEVVFYs/view",
+    githubLink: "https://github.com/vedantkesharia/codeshastraxi_AambaDB",
+  },
+  {
     title: "AgroServe - P2P Lending Platform",
     description:
       "Fintech Domain Prize Winner at SPIT Hackathon. Multilingual platform for secure farmer lending with ML-based crop analysis and credit scoring.",
