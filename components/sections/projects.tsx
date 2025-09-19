@@ -47,6 +47,16 @@ const allProjects = [
     githubLink: "https://github.com/vedantkesharia/spit_hackathon",
   },
   {
+    title: "Team Selection Portal - Departmental Project",
+    description:
+      "I built a Team Selection Portal for my department that allowed students to securely form project teams with OTP authentication, while enabling teachers to view groups and export the final list to Excel.",
+    tech: ["Nextjs", "MERN Stack", "OTP Verification", "Tailwind CSS", "Automation"],
+    image: "/img/teamselectionwebsite.jpg",
+    // achievement: "🏆 Fintech Prize Winner",
+    demoLink: "https://drive.google.com/file/d/1IvqcVmkMHGcItc2y6omiowcFASOmnXyJ/view?usp=sharing",
+    githubLink: "https://github.com/vedantkesharia/fyp-team-selection-website",
+  },
+  {
     title: "Virtual Dice Simulator",
     description:
       "Virtual lab for students to explain them probability using dice simulation with real-time graph updates and interactive learning.",
