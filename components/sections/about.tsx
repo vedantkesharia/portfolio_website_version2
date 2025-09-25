@@ -29,7 +29,7 @@ export function AboutSection() {
   const ref = useRef<HTMLDivElement>(null);
   const statsRef = useRef<HTMLDivElement>(null);
   const backgroundRef = useRef<HTMLDivElement>(null);
-  
+
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start end", "end start"],
@@ -97,19 +97,21 @@ export function AboutSection() {
         // Alternative approach: Use GitHub's statistics API for more accurate count
         try {
           let alternativeLinesCount = 0;
-          
+
           // Get contributor statistics which includes line counts
           const statsPromises = repos.slice(0, 50).map(async (repo) => {
             try {
-              const { data: contributors } = await octokit.rest.repos.getContributorsStats({
-                owner: "vedantkesharia",
-                repo: repo.name,
-              });
+              const { data: contributors } =
+                await octokit.rest.repos.getContributorsStats({
+                  owner: "vedantkesharia",
+                  repo: repo.name,
+                });
 
               if (contributors && Array.isArray(contributors)) {
                 // Find your contributions
                 const yourContributions = contributors.find(
-                  (contributor: any) => contributor.author?.login === "vedantkesharia"
+                  (contributor: any) =>
+                    contributor.author?.login === "vedantkesharia"
                 );
 
                 if (yourContributions && yourContributions.weeks) {
@@ -129,14 +131,18 @@ export function AboutSection() {
           });
 
           const statsResults = await Promise.all(statsPromises);
-          alternativeLinesCount = statsResults.reduce((sum, count) => sum + count, 0);
+          alternativeLinesCount = statsResults.reduce(
+            (sum, count) => sum + count,
+            0
+          );
 
           // Use the higher of the two estimates
           if (alternativeLinesCount > totalLinesOfCode) {
             totalLinesOfCode = alternativeLinesCount;
-            console.log(`Using contributor stats: ${alternativeLinesCount} lines`);
+            console.log(
+              `Using contributor stats: ${alternativeLinesCount} lines`
+            );
           }
-
         } catch (error) {
           console.log("Contributor stats failed, using language stats");
         }
@@ -144,10 +150,14 @@ export function AboutSection() {
         // If the count still seems low, apply a more conservative multiplier
         if (totalLinesOfCode < 30000) {
           // Check if we have significant repositories that might be undercounted
-          const significantRepos = repos.filter(repo => (repo.size ?? 0) > 100); // repos > 100KB
+          const significantRepos = repos.filter(
+            (repo) => (repo.size ?? 0) > 100
+          ); // repos > 100KB
           if (significantRepos.length > 10) {
             totalLinesOfCode = Math.floor(totalLinesOfCode * 1.5);
-            console.log(`Applied multiplier for significant repos: ${totalLinesOfCode}`);
+            console.log(
+              `Applied multiplier for significant repos: ${totalLinesOfCode}`
+            );
           }
         }
 
@@ -173,14 +183,12 @@ export function AboutSection() {
                 }
               `;
 
-              const contributionsResult = await octokit.graphql<GraphQLResponse>(
-                contributionsQuery,
-                {
+              const contributionsResult =
+                await octokit.graphql<GraphQLResponse>(contributionsQuery, {
                   username: "vedantkesharia",
                   from: `${year}-01-01T00:00:00Z`,
                   to: `${year}-12-31T23:59:59Z`,
-                }
-              );
+                });
 
               graphqlTotal +=
                 contributionsResult.user.contributionsCollection
@@ -197,10 +205,9 @@ export function AboutSection() {
           if (totalCommits > 0) {
             totalCommits = Math.floor(totalCommits * 1.1); // 10% buffer
           }
-
         } catch (error) {
           console.log("GraphQL failed, using fallback method");
-          
+
           // Fallback: estimate from repositories
           const commitPromises = repos.slice(0, 30).map(async (repo) => {
             try {
@@ -221,19 +228,92 @@ export function AboutSection() {
           totalCommits = Math.floor(totalCommits * 2); // Apply multiplier for uncounted repos
         }
 
-        // Fetch LeetCode stats
         let leetcodeSolved = 0;
         try {
-          const leetcodeResponse = await fetch(
-            "https://leetcode-stats-api.herokuapp.com/keshariavedant"
-          );
-          if (leetcodeResponse.ok) {
-            const leetcodeData = await leetcodeResponse.json();
-            leetcodeSolved = leetcodeData.totalSolved || 0;
+          // Try multiple LeetCode APIs for better reliability
+          const leetcodeEndpoints = [
+            "https://leetcode-stats-api.herokuapp.com/keshariavedant",
+            "https://leetcodestats.herokuapp.com/keshariavedant",
+            "https://leetcode-api-faisalshohag.vercel.app/keshariavedant",
+          ];
+
+          let leetcodeData = null;
+
+          // Try each endpoint until one works
+          for (const endpoint of leetcodeEndpoints) {
+            try {
+              console.log(`Trying LeetCode endpoint: ${endpoint}`);
+
+              const leetcodeResponse = await fetch(endpoint, {
+                method: "GET",
+                headers: {
+                  Accept: "application/json",
+                  "User-Agent":
+                    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
+                },
+              });
+
+              if (leetcodeResponse.ok) {
+                leetcodeData = await leetcodeResponse.json();
+                console.log("LeetCode data received:", leetcodeData);
+                break; // Exit loop if successful
+              } else {
+                console.log(
+                  `Endpoint ${endpoint} returned status:`,
+                  leetcodeResponse.status
+                );
+              }
+            } catch (endpointError) {
+              console.log(`Endpoint ${endpoint} failed:`, endpointError);
+              continue; // Try next endpoint
+            }
+          }
+
+          if (leetcodeData) {
+            // Try different possible property names
+            leetcodeSolved =
+              leetcodeData.totalSolved ||
+              leetcodeData.solved ||
+              leetcodeData.total_solved ||
+              leetcodeData.solvedProblem ||
+              leetcodeData.totalQuestions ||
+              (leetcodeData.easySolved || 0) +
+                (leetcodeData.mediumSolved || 0) +
+                (leetcodeData.hardSolved || 0) ||
+              (leetcodeData.easy || 0) +
+                (leetcodeData.medium || 0) +
+                (leetcodeData.hard || 0) ||
+              0;
+
+            console.log(`LeetCode problems solved: ${leetcodeSolved}`);
+          }
+
+          // If no API worked, try a direct fetch to your LeetCode profile
+          if (leetcodeSolved === 0) {
+            try {
+              console.log("Trying alternative LeetCode API...");
+              const altResponse = await fetch(
+                "https://alfa-leetcode-api.onrender.com/keshariavedant/solved"
+              );
+              if (altResponse.ok) {
+                const altData = await altResponse.json();
+                console.log("Alternative API data:", altData);
+                leetcodeSolved =
+                  altData.solvedProblem || altData.totalSolved || 0;
+              }
+            } catch (altError) {
+              console.log("Alternative API also failed:", altError);
+            }
           }
         } catch (error) {
-          console.log("LeetCode API failed:", error);
-          leetcodeSolved = 150; // Fallback value
+          console.log("All LeetCode APIs failed:", error);
+        }
+
+        // If still 0, set a reasonable fallback based on your actual progress
+        if (leetcodeSolved === 0) {
+          // You can update this number to reflect your actual LeetCode progress
+          leetcodeSolved = 150; // Update this to your actual count
+          console.log("Using fallback LeetCode count:", leetcodeSolved);
         }
 
         setGithubStats({
@@ -243,7 +323,6 @@ export function AboutSection() {
           leetcodeSolved,
           loading: false,
         });
-
       } catch (error) {
         console.error("Error fetching GitHub stats:", error);
         // Fallback to mock data if API fails
@@ -371,18 +450,14 @@ export function AboutSection() {
                       )
                     }
                   >
-                    <span className="tracking-wide">
-                      Download Resume
-                    </span>
+                    <span className="tracking-wide">Download Resume</span>
                   </button>
-           
+
                   <button
                     onClick={() => scrollToSection("contact")}
                     className="relative z-20 px-10 py-4 border-2 border-gray-600 text-gray-300 rounded-sm transition-all duration-300 hover:border-white hover:text-white hover:shadow-lg hover:transform hover:-translate-y-1 hover:scale-105 hover:bg-white/10 cursor-pointer"
                   >
-                    <span className="tracking-wide">
-                      Let's Connect
-                    </span>
+                    <span className="tracking-wide">Let's Connect</span>
                   </button>
                 </motion.div>
               </div>
@@ -391,10 +466,7 @@ export function AboutSection() {
         </motion.div>
 
         {/* Development Stats Grid - Optimized Animation */}
-        <motion.div
-          ref={statsRef}
-          className="mb-20"
-        >
+        <motion.div ref={statsRef} className="mb-20">
           <motion.h3
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -497,10 +569,7 @@ export function AboutSection() {
         </motion.div>
 
         {/* Background Info Section - Optimized */}
-        <motion.div
-          ref={backgroundRef}
-          className="mt-24"
-        >
+        <motion.div ref={backgroundRef} className="mt-24">
           <div className="max-w-5xl mx-auto">
             <motion.h3
               initial={{ opacity: 0, y: 20 }}
@@ -635,10 +704,6 @@ export function AboutSection() {
   );
 }
 
-
-
-
-
 //works but issue in line of code
 // "use client";
 // import { motion, useScroll, useTransform, useInView } from "framer-motion";
@@ -670,7 +735,7 @@ export function AboutSection() {
 //   const ref = useRef<HTMLDivElement>(null);
 //   const statsRef = useRef<HTMLDivElement>(null);
 //   const backgroundRef = useRef<HTMLDivElement>(null);
-  
+
 //   const { scrollYProgress } = useScroll({
 //     target: ref,
 //     offset: ["start end", "end start"],
@@ -1030,7 +1095,7 @@ export function AboutSection() {
 //                       Download Resume
 //                     </span>
 //                   </button>
-           
+
 //                   <button
 //                     onClick={() => scrollToSection("contact")}
 //                     className="relative z-20 px-10 py-4 border-2 border-gray-600 text-gray-300 rounded-sm transition-all duration-300 hover:border-white hover:text-white hover:shadow-lg hover:transform hover:-translate-y-1 hover:scale-105 hover:bg-white/10 cursor-pointer"
@@ -1271,7 +1336,6 @@ export function AboutSection() {
 //           </div>
 //         </motion.div>
 
-
 //         {/* Bottom Accent */}
 //         <motion.div
 //           initial={{ opacity: 0, scaleX: 0 }}
@@ -1290,11 +1354,6 @@ export function AboutSection() {
 //     </section>
 //   );
 // }
-
-
-
-
-
 
 //works only more animation time
 // "use client";
@@ -1586,7 +1645,7 @@ export function AboutSection() {
 //       {/* Animated Background Effects */}
 //       {/* <div className="absolute inset-0">
 //         <Meteors number={30} />
-//         <ShootingStars 
+//         <ShootingStars
 //           minSpeed={15}
 //           maxSpeed={35}
 //           minDelay={800}
@@ -1709,7 +1768,7 @@ export function AboutSection() {
 //                       Download Resume
 //                     </span>
 //                   </motion.button>
-           
+
 //                   <motion.button
 //                     whileHover={{ scale: 1.02, y: -2 }}
 //                     whileTap={{ scale: 0.98 }}
@@ -1982,21 +2041,6 @@ export function AboutSection() {
 //     </section>
 //   );
 // }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // "use client"
 // import { motion, useScroll, useTransform } from "framer-motion"
