@@ -10,7 +10,7 @@ const skills = [
   {
     name: "Full-Stack Development",
     icon: <Code className="w-10 h-10 text-white" />,
-    tech: ["React.js", "Next.js", "Node.js", "Express", "MongoDB", "Firebase", "Javascript", "TypeScript", "Tailwind CSS", "PHP", "MySQL", "HTML", "CSS"],
+    tech: ["React.js", "Next.js", "Node.js", "Express", "MongoDB", "Flutter", "Dart", "Firebase", "Javascript", "TypeScript", "Tailwind CSS", "PHP", "MySQL", "HTML", "CSS"],
     description: "End-to-end web application development with modern frameworks and best practices.",
     revealText: "Building scalable applications from frontend to backend with cutting-edge technologies.",
   },
