@@ -14,8 +14,8 @@ const allProjects = [
     tech: ["Python", "NLP", "RPA", "ML", "Web Scraping", "Email API"],
     image: "/placeholder.svg?height=200&width=400&text=CareerMatic+RPA+Job+Matching",
     achievement: "🏆 1st Place IIT Bombay",
-    // demoLink: "https://vedantkeshariaportfolio.netlify.app/#project",
-    // githubLink: "https://github.com/vedantkesharia/vedant1_cdac/tree/master",
+    demoLink: "https://drive.google.com/file/d/1MWQW0wXRw5sfWMICjcdD-JLMR9uPHcc2/view?usp=sharing",
+    githubLink: "https://drive.google.com/file/d/1MWQW0wXRw5sfWMICjcdD-JLMR9uPHcc2/view?usp=sharing",
   },
   {
     title: "EcoCarrier",

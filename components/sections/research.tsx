@@ -75,7 +75,7 @@ const researchPapers = [
     title:
       "Optimized ECG-Based Detection of Hypertensive Heart Disease Using Federated Machine Learning",
     journal: "5th IEEE ASIANCON 2025",
-    status: "Under Review",
+    status: "Accepted",
     year: "2025",
     description:
       "Federated machine learning approach for ECG-based hypertensive heart disease detection.",
