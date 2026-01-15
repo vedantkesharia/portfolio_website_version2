@@ -12,7 +12,8 @@ const allProjects = [
     description:
       "1st place at IIT Bombay Techfest. Automated job matching system with resume parsing, AI-based role matching, and personalized email delivery.",
     tech: ["Python", "NLP", "RPA", "ML", "Web Scraping", "Email API"],
-    image: "/placeholder.svg?height=200&width=400&text=CareerMatic+RPA+Job+Matching",
+    // image: "/placeholder.svg?height=200&width=400&text=CareerMatic+RPA+Job+Matching",
+    image: "img/trubot_img.png",
     achievement: "🏆 1st Place IIT Bombay",
     demoLink: "https://drive.google.com/file/d/1MWQW0wXRw5sfWMICjcdD-JLMR9uPHcc2/view?usp=sharing",
     githubLink: "https://drive.google.com/file/d/1MWQW0wXRw5sfWMICjcdD-JLMR9uPHcc2/view?usp=sharing",
