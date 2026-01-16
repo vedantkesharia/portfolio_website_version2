@@ -38,9 +38,18 @@ const allProjects = [
     githubLink: "https://github.com/vedantkesharia/codeshastraxi_AambaDB",
   },
   {
+    title: "InsightFlow",
+    description:
+      "A production-grade Lakehouse ETL/ELT pipeline on Azure using Databricks and PySpark that processes transactional data and delivers actionable sales and business insights via a serverless analytics layer.",
+    tech: ["Azure", "Data Factory", "Databricks", "PySpark", "Synapse Analytics", "Power BI", "SQL"],
+    image: "/img/insightflow_img.png",
+    demoLink: "https://github.com/vedantkesharia/InsightFlow",
+    githubLink: "https://github.com/vedantkesharia/InsightFlow",
+},
+  {
     title: "AgroServe - P2P Lending Platform",
     description:
-      "Fintech Domain Prize Winner at SPIT Hackathon. Multilingual platform for secure farmer lending with ML-based crop analysis and credit scoring.",
+      "Fintech Domain Prize Winner at SPIT Hackathon. Multilingual platform for secure farmer lending with ML-based crop analysis, region-specific data, and automated credit scoring for rural agricultural users.",
     tech: ["Flutter", "MERN Stack", "ML", "Credit Analysis", "Multilingual"],
     image: "/img/AgroServe.png",
     achievement: "🏆 Fintech Prize Winner",
