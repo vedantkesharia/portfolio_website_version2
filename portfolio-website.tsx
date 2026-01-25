@@ -1,7 +1,7 @@
-"use client"
+"use client";
 
-import type React from "react"
-import { useState, useEffect, useRef } from "react"
+import type React from "react";
+import { useState, useEffect, useRef } from "react";
 import {
   ChevronDown,
   Github,
@@ -14,202 +14,221 @@ import {
   Menu,
   X,
   BookOpen,
-} from "lucide-react"
-import * as THREE from "three"
+} from "lucide-react";
+import * as THREE from "three";
 
 const Portfolio: React.FC = () => {
-  const [activeSection, setActiveSection] = useState<string>("home")
-  const [isScrolled, setIsScrolled] = useState<boolean>(false)
-  const [mousePosition, setMousePosition] = useState<{ x: number; y: number }>({ x: 0, y: 0 })
-  const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false)
-  const threeRef = useRef<HTMLDivElement>(null)
-  const [buttonText, setButtonText] = useState<string>("Send Message")
+  const [activeSection, setActiveSection] = useState<string>("home");
+  const [isScrolled, setIsScrolled] = useState<boolean>(false);
+  const [mousePosition, setMousePosition] = useState<{ x: number; y: number }>({
+    x: 0,
+    y: 0,
+  });
+  const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
+  const threeRef = useRef<HTMLDivElement>(null);
+  const [buttonText, setButtonText] = useState<string>("Send Message");
   const [formData, setFormData] = useState<{
-    user_firstname: string
-    user_lastname: string
-    user_email: string
-    user_phone: string
-    message: string
+    user_firstname: string;
+    user_lastname: string;
+    user_email: string;
+    user_phone: string;
+    message: string;
   }>({
     user_firstname: "",
     user_lastname: "",
     user_email: "",
     user_phone: "",
     message: "",
-  })
-  const [formErrors, setFormErrors] = useState<Record<string, string>>({})
+  });
+  const [formErrors, setFormErrors] = useState<Record<string, string>>({});
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50)
+      setIsScrolled(window.scrollY > 50);
 
-      const sections = ["home", "about", "skills", "research", "projects", "contact"]
+      const sections = [
+        "home",
+        "about",
+        "skills",
+        "research",
+        "projects",
+        "contact",
+      ];
       const current = sections.find((section) => {
-        const element = document.getElementById(section)
+        const element = document.getElementById(section);
         if (element) {
-          const rect = element.getBoundingClientRect()
-          return rect.top <= 100 && rect.bottom >= 100
+          const rect = element.getBoundingClientRect();
+          return rect.top <= 100 && rect.bottom >= 100;
         }
-        return false
-      })
+        return false;
+      });
 
-      if (current) setActiveSection(current)
-    }
+      if (current) setActiveSection(current);
+    };
 
     const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY })
-    }
+      setMousePosition({ x: e.clientX, y: e.clientY });
+    };
 
     // Three.js setup
     if (threeRef.current) {
-      const scene = new THREE.Scene()
-      const camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000)
-      const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true })
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000);
+      const renderer = new THREE.WebGLRenderer({
+        alpha: true,
+        antialias: true,
+      });
 
-      renderer.setSize(300, 300)
-      renderer.setClearColor(0x000000, 0)
-      threeRef.current.appendChild(renderer.domElement)
+      renderer.setSize(300, 300);
+      renderer.setClearColor(0x000000, 0);
+      threeRef.current.appendChild(renderer.domElement);
 
       // Create a geometric shape
-      const geometry = new THREE.IcosahedronGeometry(1, 1)
+      const geometry = new THREE.IcosahedronGeometry(1, 1);
       const material = new THREE.MeshPhongMaterial({
         color: 0xffffff,
         wireframe: true,
         transparent: true,
         opacity: 0.8,
-      })
-      const mesh = new THREE.Mesh(geometry, material)
-      scene.add(mesh)
+      });
+      const mesh = new THREE.Mesh(geometry, material);
+      scene.add(mesh);
 
       // Add lighting
-      const light = new THREE.DirectionalLight(0xffffff, 1)
-      light.position.set(5, 5, 5)
-      scene.add(light)
-      scene.add(new THREE.AmbientLight(0x404040, 0.4))
+      const light = new THREE.DirectionalLight(0xffffff, 1);
+      light.position.set(5, 5, 5);
+      scene.add(light);
+      scene.add(new THREE.AmbientLight(0x404040, 0.4));
 
-      camera.position.z = 3
+      camera.position.z = 3;
 
       // Animation loop
       const animate = () => {
-        requestAnimationFrame(animate)
-        mesh.rotation.x += 0.01
-        mesh.rotation.y += 0.01
-        renderer.render(scene, camera)
-      }
-      animate()
+        requestAnimationFrame(animate);
+        mesh.rotation.x += 0.01;
+        mesh.rotation.y += 0.01;
+        renderer.render(scene, camera);
+      };
+      animate();
 
       // Event listeners
-      window.addEventListener("scroll", handleScroll)
-      window.addEventListener("mousemove", handleMouseMove)
+      window.addEventListener("scroll", handleScroll);
+      window.addEventListener("mousemove", handleMouseMove);
 
       // Cleanup
       return () => {
-        window.removeEventListener("scroll", handleScroll)
-        window.removeEventListener("mousemove", handleMouseMove)
-        if (threeRef.current && renderer.domElement && threeRef.current.contains(renderer.domElement)) {
-          threeRef.current.removeChild(renderer.domElement)
+        window.removeEventListener("scroll", handleScroll);
+        window.removeEventListener("mousemove", handleMouseMove);
+        if (
+          threeRef.current &&
+          renderer.domElement &&
+          threeRef.current.contains(renderer.domElement)
+        ) {
+          threeRef.current.removeChild(renderer.domElement);
         }
-        renderer.dispose()
-        geometry.dispose()
-        material.dispose()
-      }
+        renderer.dispose();
+        geometry.dispose();
+        material.dispose();
+      };
     }
 
-    window.addEventListener("scroll", handleScroll)
-    window.addEventListener("mousemove", handleMouseMove)
+    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("mousemove", handleMouseMove);
 
     return () => {
-      window.removeEventListener("scroll", handleScroll)
-      window.removeEventListener("mousemove", handleMouseMove)
-    }
-  }, [])
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("mousemove", handleMouseMove);
+    };
+  }, []);
 
   const scrollToSection = (sectionId: string) => {
     document.getElementById(sectionId)?.scrollIntoView({
       behavior: "smooth",
       block: "start",
-    })
-    setMobileMenuOpen(false)
-  }
+    });
+    setMobileMenuOpen(false);
+  };
 
   const validateForm = (): boolean => {
-    let isValid = true
-    const newErrors: Record<string, string> = {}
+    let isValid = true;
+    const newErrors: Record<string, string> = {};
 
     if (formData.user_firstname.trim() === "") {
-      newErrors.user_firstname = "First name is required"
-      isValid = false
+      newErrors.user_firstname = "First name is required";
+      isValid = false;
     }
 
     if (formData.user_lastname.trim() === "") {
-      newErrors.user_lastname = "Last name is required"
-      isValid = false
+      newErrors.user_lastname = "Last name is required";
+      isValid = false;
     }
 
     if (formData.user_email.trim() === "") {
-      newErrors.user_email = "Email is required"
-      isValid = false
+      newErrors.user_email = "Email is required";
+      isValid = false;
     } else if (!/\S+@\S+\.\S+/.test(formData.user_email)) {
-      newErrors.user_email = "Email is invalid"
-      isValid = false
+      newErrors.user_email = "Email is invalid";
+      isValid = false;
     }
 
     if (formData.user_phone.trim() === "") {
-      newErrors.user_phone = "Phone number is required"
-      isValid = false
+      newErrors.user_phone = "Phone number is required";
+      isValid = false;
     } else if (!/^\d{10}$/.test(formData.user_phone)) {
-      newErrors.user_phone = "Phone number is invalid"
-      isValid = false
+      newErrors.user_phone = "Phone number is invalid";
+      isValid = false;
     }
 
     if (formData.message.trim() === "") {
-      newErrors.message = "Message is required"
-      isValid = false
+      newErrors.message = "Message is required";
+      isValid = false;
     }
 
-    setFormErrors(newErrors)
-    return isValid
-  }
+    setFormErrors(newErrors);
+    return isValid;
+  };
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
+    const { name, value } = e.target;
     setFormData((prevData) => ({
       ...prevData,
       [name]: value,
-    }))
+    }));
     // Clear error when user starts typing
     if (formErrors[name]) {
       setFormErrors((prev) => ({
         ...prev,
         [name]: "",
-      }))
+      }));
     }
-  }
+  };
 
   const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
+    e.preventDefault();
 
     if (validateForm()) {
-      setButtonText("Sending...")
+      setButtonText("Sending...");
 
       // Simulate EmailJS call (replace with actual EmailJS implementation)
       setTimeout(() => {
-        console.log("Email sent successfully")
-        setButtonText("Message Sent!")
+        console.log("Email sent successfully");
+        setButtonText("Message Sent!");
         setFormData({
           user_firstname: "",
           user_lastname: "",
           user_email: "",
           user_phone: "",
           message: "",
-        })
+        });
 
         setTimeout(() => {
-          setButtonText("Send Message")
-        }, 3000)
-      }, 2000)
+          setButtonText("Send Message");
+        }, 3000);
+      }, 2000);
     }
-  }
+  };
 
   const skills = [
     {
@@ -221,7 +240,14 @@ const Portfolio: React.FC = () => {
     {
       name: "AI/ML Engineering",
       icon: Palette,
-      tech: ["TensorFlow", "PyTorch", "NLP", "Computer Vision", "GANs", "Neural Networks"],
+      tech: [
+        "TensorFlow",
+        "PyTorch",
+        "NLP",
+        "Computer Vision",
+        "GANs",
+        "Neural Networks",
+      ],
       description: "Advanced machine learning and AI solutions",
     },
     {
@@ -233,34 +259,45 @@ const Portfolio: React.FC = () => {
     {
       name: "Research & Publications",
       icon: BookOpen,
-      tech: ["7+ Papers", "Patent Applied", "International Journals", "Conferences"],
+      tech: [
+        "7+ Papers",
+        "Patent Applied",
+        "International Journals",
+        "Conferences",
+      ],
       description: "Academic research and scholarly publications",
     },
-  ]
+  ];
 
   const researchPapers = [
     {
-      title: "Adaptive Web Accessing Tool for Visually Impaired People with Explainable AI",
+      title:
+        "Adaptive Web Accessing Tool for Visually Impaired People with Explainable AI",
       journal: "Educational Administration: Theory and Practice",
       status: "Published",
       year: "2024",
-      description: "Voice assistant with ML/NLP, achieving 97% accuracy with explainable AI techniques.",
+      description:
+        "Voice assistant with ML/NLP, achieving 97% accuracy with explainable AI techniques.",
       tech: ["NLP", "ML", "Explainable AI", "TF-IDF"],
     },
     {
-      title: "Detection of Fake Online Products Using Unsupervised GAN with Grad-CAM Visualization",
+      title:
+        "Detection of Fake Online Products Using Unsupervised GAN with Grad-CAM Visualization",
       journal: "Springer - Smart Innovation, Systems and Technologies",
       status: "To be Published",
       year: "2024",
-      description: "DCGAN and Grad-CAM framework achieving 0.94 R² and 0.98 F1 scores.",
+      description:
+        "DCGAN and Grad-CAM framework achieving 0.94 R² and 0.98 F1 scores.",
       tech: ["GANs", "DCGAN", "Grad-CAM", "Computer Vision"],
     },
     {
-      title: "Comprehensive NLP System for Research Paper Discovery and Similarity Analysis",
+      title:
+        "Comprehensive NLP System for Research Paper Discovery and Similarity Analysis",
       journal: "ICCCDS 2025",
       status: "Accepted",
       year: "2025",
-      description: "NLP system using TF-IDF, LSA, Doc2Vec with LSTM-based citation prediction.",
+      description:
+        "NLP system using TF-IDF, LSA, Doc2Vec with LSTM-based citation prediction.",
       tech: ["NLP", "TF-IDF", "LSTM", "Doc2Vec"],
     },
     {
@@ -268,7 +305,8 @@ const Portfolio: React.FC = () => {
       journal: "Under Review",
       status: "Under Review",
       year: "2025",
-      description: "Federated learning for crime detection with 90-95% accuracy across aggregation methods.",
+      description:
+        "Federated learning for crime detection with 90-95% accuracy across aggregation methods.",
       tech: ["Federated Learning", "Computer Vision", "Privacy"],
     },
     {
@@ -276,7 +314,8 @@ const Portfolio: React.FC = () => {
       journal: "Patent Application",
       status: "Patent Applied",
       year: "2024",
-      description: "Novel scheduling algorithms for ML workloads in heterogeneous environments.",
+      description:
+        "Novel scheduling algorithms for ML workloads in heterogeneous environments.",
       tech: ["Algorithms", "ML Optimization", "Scheduling"],
     },
     {
@@ -284,10 +323,11 @@ const Portfolio: React.FC = () => {
       journal: "SCIS 2025",
       status: "Under Review",
       year: "2025",
-      description: "Generative adversarial networks for robust digital watermarking solutions.",
+      description:
+        "Generative adversarial networks for robust digital watermarking solutions.",
       tech: ["GANs", "Digital Watermarking", "Security"],
     },
-  ]
+  ];
 
   const projects = [
     {
@@ -295,7 +335,8 @@ const Portfolio: React.FC = () => {
       description:
         "Smart India Hackathon 2024 Finalist. Comprehensive ESG platform with IoT leak detection, MERN stack, Flutter app, and multilingual RAG chatbot.",
       tech: ["MERN Stack", "Flutter", "IoT", "AWS", "ML", "RAG"],
-      image: "/placeholder.svg?height=200&width=400&text=EcoCarrier+ESG+Analytics+Platform",
+      image:
+        "/placeholder.svg?height=200&width=400&text=EcoCarrier+ESG+Analytics+Platform",
       achievement: "SIH 2024 Finalist",
     },
     {
@@ -303,7 +344,8 @@ const Portfolio: React.FC = () => {
       description:
         "1st place at IIT Bombay Techfest. Automated job matching system with resume parsing, AI-based role matching, and personalized email delivery.",
       tech: ["Python", "NLP", "RPA", "ML", "Web Scraping", "Email API"],
-      image: "/placeholder.svg?height=200&width=400&text=CareerMatic+RPA+Job+Matching",
+      image:
+        "/placeholder.svg?height=200&width=400&text=CareerMatic+RPA+Job+Matching",
       achievement: "1st Place IIT Bombay",
     },
     {
@@ -311,7 +353,8 @@ const Portfolio: React.FC = () => {
       description:
         "Fintech Domain Prize Winner at SPIT Hackathon. Multilingual platform for secure farmer lending with ML-based crop analysis and credit scoring.",
       tech: ["Flutter", "MERN Stack", "ML", "Credit Analysis", "Multilingual"],
-      image: "/placeholder.svg?height=200&width=400&text=AgroServe+P2P+Lending+Platform",
+      image:
+        "/placeholder.svg?height=200&width=400&text=AgroServe+P2P+Lending+Platform",
       achievement: "Fintech Prize Winner",
     },
     {
@@ -319,7 +362,8 @@ const Portfolio: React.FC = () => {
       description:
         "Published research with voice assistant using ML/NLP. Features multilingual support, Wikipedia integration, and explainable AI with 97% accuracy.",
       tech: ["Python", "NLP", "ML", "TF-IDF", "Explainable AI", "Voice Tech"],
-      image: "/placeholder.svg?height=200&width=400&text=Adaptive+Web+Tool+Published+Research",
+      image:
+        "/placeholder.svg?height=200&width=400&text=Adaptive+Web+Tool+Published+Research",
       achievement: "Published Research",
     },
     {
@@ -327,7 +371,8 @@ const Portfolio: React.FC = () => {
       description:
         "Research using DCGAN and Grad-CAM visualization for fraud detection. Achieved 0.94 R² and 0.98 F1 scores. To be published in Springer.",
       tech: ["GANs", "DCGAN", "Grad-CAM", "Computer Vision", "PyTorch", "ML"],
-      image: "/placeholder.svg?height=200&width=400&text=Fake+Product+Detection+GANs+Grad-CAM",
+      image:
+        "/placeholder.svg?height=200&width=400&text=Fake+Product+Detection+GANs+Grad-CAM",
       achievement: "Springer Publication",
     },
     {
@@ -335,22 +380,34 @@ const Portfolio: React.FC = () => {
       description:
         "Comprehensive system using TF-IDF, LSA, Doc2Vec, and Sentence Transformers. LSTM-based citation prediction and similarity analysis.",
       tech: ["NLP", "TF-IDF", "LSTM", "Doc2Vec", "Transformers", "Python"],
-      image: "/placeholder.svg?height=200&width=400&text=NLP+Paper+Discovery+Research+System",
+      image:
+        "/placeholder.svg?height=200&width=400&text=NLP+Paper+Discovery+Research+System",
       achievement: "ICCCDS 2025",
     },
-  ]
+  ];
 
   return (
     <div className="bg-black text-white overflow-x-hidden">
-      {/* Custom Cursor */}
+      {/* Custom Cursor - only for medium to big screens */}
+
       <div
-        className="fixed w-6 h-6 bg-white rounded-full pointer-events-none z-50 mix-blend-difference transition-transform duration-150 ease-out"
+        className="hidden md:block fixed w-6 h-6 bg-white rounded-full pointer-events-none z-50 mix-blend-difference transition-transform duration-150 ease-out"
         style={{
           left: mousePosition.x - 12,
           top: mousePosition.y - 12,
           transform: `scale(${activeSection === "home" ? 1.5 : 1})`,
         }}
       />
+      
+      {/* Custom Cursor - only for all screens */}
+      {/* <div
+        className="fixed w-6 h-6 bg-white rounded-full pointer-events-none z-50 mix-blend-difference transition-transform duration-150 ease-out"
+        style={{
+          left: mousePosition.x - 12,
+          top: mousePosition.y - 12,
+          transform: `scale(${activeSection === "home" ? 1.5 : 1})`,
+        }}
+      /> */}
 
       {/* Navigation */}
       <nav
@@ -362,12 +419,21 @@ const Portfolio: React.FC = () => {
               Vedant Kesharia
             </div>
             <div className="hidden md:flex space-x-8">
-              {["Home", "About", "Skills", "Research", "Projects", "Contact"].map((item) => (
+              {[
+                "Home",
+                "About",
+                "Skills",
+                "Research",
+                "Projects",
+                "Contact",
+              ].map((item) => (
                 <button
                   key={item}
                   onClick={() => scrollToSection(item.toLowerCase())}
                   className={`relative px-4 py-2 transition-all duration-300 hover:text-gray-300 ${
-                    activeSection === item.toLowerCase() ? "text-white" : "text-gray-500"
+                    activeSection === item.toLowerCase()
+                      ? "text-white"
+                      : "text-gray-500"
                   }`}
                 >
                   {item}
@@ -379,8 +445,15 @@ const Portfolio: React.FC = () => {
             </div>
 
             {/* Mobile Menu Button */}
-            <button className="md:hidden p-2" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
-              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            <button
+              className="md:hidden p-2"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            >
+              {mobileMenuOpen ? (
+                <X className="w-6 h-6" />
+              ) : (
+                <Menu className="w-6 h-6" />
+              )}
             </button>
           </div>
 
@@ -388,12 +461,21 @@ const Portfolio: React.FC = () => {
           {mobileMenuOpen && (
             <div className="md:hidden absolute top-full left-0 w-full bg-black/95 backdrop-blur-lg border-b border-white/10">
               <div className="flex flex-col space-y-4 p-6">
-                {["Home", "About", "Skills", "Research", "Projects", "Contact"].map((item) => (
+                {[
+                  "Home",
+                  "About",
+                  "Skills",
+                  "Research",
+                  "Projects",
+                  "Contact",
+                ].map((item) => (
                   <button
                     key={item}
                     onClick={() => scrollToSection(item.toLowerCase())}
                     className={`text-left px-4 py-2 transition-all duration-300 hover:text-gray-300 ${
-                      activeSection === item.toLowerCase() ? "text-white" : "text-gray-500"
+                      activeSection === item.toLowerCase()
+                        ? "text-white"
+                        : "text-gray-500"
                     }`}
                   >
                     {item}
@@ -406,20 +488,28 @@ const Portfolio: React.FC = () => {
       </nav>
 
       {/* Hero Section */}
-      <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
+      <section
+        id="home"
+        className="min-h-screen flex items-center justify-center relative overflow-hidden"
+      >
         <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-900 to-black opacity-50" />
         <div className="relative z-10 text-center max-w-4xl mx-auto px-6">
           <div className="space-y-6 animate-fade-in">
             <div className="text-lg text-gray-400 mb-4">Hello, I'm</div>
             <h1 className="text-6xl md:text-8xl font-bold leading-tight">
-              <span className="block transform hover:scale-105 transition-transform duration-700">Vedant</span>
+              <span className="block transform hover:scale-105 transition-transform duration-700">
+                Vedant
+              </span>
               <span className="block bg-gradient-to-r from-white via-gray-300 to-white bg-clip-text text-transparent animate-pulse">
                 Kesharia
               </span>
             </h1>
-            <h2 className="text-2xl md:text-3xl text-gray-300 font-light mb-6">Full-Stack AI Engineer & Researcher</h2>
+            <h2 className="text-2xl md:text-3xl text-gray-300 font-light mb-6">
+              Full-Stack AI Engineer & Researcher
+            </h2>
             <p className="text-xl md:text-2xl text-gray-400 max-w-2xl mx-auto leading-relaxed">
-              Building intelligent systems with cutting-edge AI/ML, full-stack development, and DevOps expertise
+              Building intelligent systems with cutting-edge AI/ML, full-stack
+              development, and DevOps expertise
             </p>
             <div className="flex justify-center space-x-6 pt-8">
               <a
@@ -471,14 +561,18 @@ const Portfolio: React.FC = () => {
                 About Me
               </h2>
               <p className="text-lg text-gray-300 leading-relaxed">
-                I'm a passionate Full-Stack AI Engineer pursuing my Master's in Computer Science at University of
-                Colorado Boulder. Currently working as an AI/ML Research Intern at USC, I specialize in building
-                intelligent systems that bridge the gap between cutting-edge AI research and practical applications.
+                I'm a passionate Full-Stack AI Engineer pursuing my Master's in
+                Computer Science at University of Colorado Boulder. Currently
+                working as an AI/ML Research Intern at USC, I specialize in
+                building intelligent systems that bridge the gap between
+                cutting-edge AI research and practical applications.
               </p>
               <p className="text-lg text-gray-300 leading-relaxed">
-                With experience at organizations like Datamatics and CDAC, I've developed expertise in full-stack
-                development, machine learning, and DevOps. I'm passionate about leveraging technology to solve
-                real-world problems, from healthcare analytics to automated systems.
+                With experience at organizations like Datamatics and CDAC, I've
+                developed expertise in full-stack development, machine learning,
+                and DevOps. I'm passionate about leveraging technology to solve
+                real-world problems, from healthcare analytics to automated
+                systems.
               </p>
               <div className="grid grid-cols-2 gap-4 mt-6 text-sm">
                 <div>
@@ -506,7 +600,10 @@ const Portfolio: React.FC = () => {
             </div>
             <div className="relative">
               <div className="w-80 h-80 mx-auto bg-gradient-to-br from-gray-800 to-gray-900 rounded-lg transform rotate-3 hover:rotate-0 transition-transform duration-500 flex items-center justify-center">
-                <div ref={threeRef} className="w-full h-full flex items-center justify-center" />
+                <div
+                  ref={threeRef}
+                  className="w-full h-full flex items-center justify-center"
+                />
               </div>
               <div className="absolute -bottom-4 -right-4 bg-white text-black px-4 py-2 rounded-full text-sm font-medium">
                 Interactive 3D Model
@@ -532,7 +629,9 @@ const Portfolio: React.FC = () => {
                   <skill.icon className="w-8 h-8 text-white mr-4 group-hover:animate-pulse" />
                   <div>
                     <h3 className="text-xl font-semibold">{skill.name}</h3>
-                    <p className="text-sm text-gray-400 mt-1">{skill.description}</p>
+                    <p className="text-sm text-gray-400 mt-1">
+                      {skill.description}
+                    </p>
                   </div>
                 </div>
                 <div className="flex flex-wrap gap-2">
@@ -585,8 +684,12 @@ const Portfolio: React.FC = () => {
                 <h3 className="text-lg font-semibold mb-3 group-hover:text-gray-300 transition-colors duration-300">
                   {paper.title}
                 </h3>
-                <p className="text-sm text-gray-400 mb-3 italic">{paper.journal}</p>
-                <p className="text-sm text-gray-300 mb-4 leading-relaxed">{paper.description}</p>
+                <p className="text-sm text-gray-400 mb-3 italic">
+                  {paper.journal}
+                </p>
+                <p className="text-sm text-gray-300 mb-4 leading-relaxed">
+                  {paper.description}
+                </p>
                 <div className="flex flex-wrap gap-2">
                   {paper.tech.map((tech, techIndex) => (
                     <span
@@ -629,7 +732,9 @@ const Portfolio: React.FC = () => {
                   <h3 className="text-xl font-semibold mb-3 group-hover:text-gray-300 transition-colors duration-300">
                     {project.title}
                   </h3>
-                  <p className="text-sm text-gray-300 mb-4 leading-relaxed">{project.description}</p>
+                  <p className="text-sm text-gray-300 mb-4 leading-relaxed">
+                    {project.description}
+                  </p>
                   <div className="flex flex-wrap gap-2 mb-4">
                     {project.tech.map((tech, techIndex) => (
                       <span
@@ -661,21 +766,28 @@ const Portfolio: React.FC = () => {
             <div className="space-y-6">
               <h3 className="text-2xl font-semibold mb-6">Let's Connect</h3>
               <p className="text-gray-300 leading-relaxed">
-                I'm always interested in discussing new opportunities, innovative projects, and collaborations in AI/ML,
-                full-stack development, and research.
+                I'm always interested in discussing new opportunities,
+                innovative projects, and collaborations in AI/ML, full-stack
+                development, and research.
               </p>
               <div className="space-y-4">
                 <div className="flex items-center space-x-4">
                   <Mail className="w-6 h-6 text-gray-400" />
-                  <span className="text-gray-300">keshariavedant@gmail.com</span>
+                  <span className="text-gray-300">
+                    keshariavedant@gmail.com
+                  </span>
                 </div>
                 <div className="flex items-center space-x-4">
                   <Linkedin className="w-6 h-6 text-gray-400" />
-                  <span className="text-gray-300">linkedin.com/in/vedant-kesharia</span>
+                  <span className="text-gray-300">
+                    linkedin.com/in/vedant-kesharia
+                  </span>
                 </div>
                 <div className="flex items-center space-x-4">
                   <Github className="w-6 h-6 text-gray-400" />
-                  <span className="text-gray-300">github.com/vedantkesharia</span>
+                  <span className="text-gray-300">
+                    github.com/vedantkesharia
+                  </span>
                 </div>
               </div>
             </div>
@@ -691,7 +803,9 @@ const Portfolio: React.FC = () => {
                     className="w-full px-4 py-3 bg-gray-900/50 border border-gray-700 rounded-lg focus:border-white/50 focus:outline-none transition-colors duration-300"
                   />
                   {formErrors.user_firstname && (
-                    <p className="text-red-400 text-sm mt-1">{formErrors.user_firstname}</p>
+                    <p className="text-red-400 text-sm mt-1">
+                      {formErrors.user_firstname}
+                    </p>
                   )}
                 </div>
                 <div>
@@ -703,7 +817,11 @@ const Portfolio: React.FC = () => {
                     onChange={handleInputChange}
                     className="w-full px-4 py-3 bg-gray-900/50 border border-gray-700 rounded-lg focus:border-white/50 focus:outline-none transition-colors duration-300"
                   />
-                  {formErrors.user_lastname && <p className="text-red-400 text-sm mt-1">{formErrors.user_lastname}</p>}
+                  {formErrors.user_lastname && (
+                    <p className="text-red-400 text-sm mt-1">
+                      {formErrors.user_lastname}
+                    </p>
+                  )}
                 </div>
               </div>
               <div>
@@ -715,7 +833,11 @@ const Portfolio: React.FC = () => {
                   onChange={handleInputChange}
                   className="w-full px-4 py-3 bg-gray-900/50 border border-gray-700 rounded-lg focus:border-white/50 focus:outline-none transition-colors duration-300"
                 />
-                {formErrors.user_email && <p className="text-red-400 text-sm mt-1">{formErrors.user_email}</p>}
+                {formErrors.user_email && (
+                  <p className="text-red-400 text-sm mt-1">
+                    {formErrors.user_email}
+                  </p>
+                )}
               </div>
               <div>
                 <input
@@ -726,7 +848,11 @@ const Portfolio: React.FC = () => {
                   onChange={handleInputChange}
                   className="w-full px-4 py-3 bg-gray-900/50 border border-gray-700 rounded-lg focus:border-white/50 focus:outline-none transition-colors duration-300"
                 />
-                {formErrors.user_phone && <p className="text-red-400 text-sm mt-1">{formErrors.user_phone}</p>}
+                {formErrors.user_phone && (
+                  <p className="text-red-400 text-sm mt-1">
+                    {formErrors.user_phone}
+                  </p>
+                )}
               </div>
               <div>
                 <textarea
@@ -737,7 +863,11 @@ const Portfolio: React.FC = () => {
                   onChange={handleInputChange}
                   className="w-full px-4 py-3 bg-gray-900/50 border border-gray-700 rounded-lg focus:border-white/50 focus:outline-none transition-colors duration-300 resize-none"
                 />
-                {formErrors.message && <p className="text-red-400 text-sm mt-1">{formErrors.message}</p>}
+                {formErrors.message && (
+                  <p className="text-red-400 text-sm mt-1">
+                    {formErrors.message}
+                  </p>
+                )}
               </div>
               <button
                 type="submit"
@@ -753,11 +883,13 @@ const Portfolio: React.FC = () => {
       {/* Footer */}
       <footer className="py-8 border-t border-gray-800">
         <div className="max-w-6xl mx-auto px-6 text-center">
-          <p className="text-gray-400">© 2024 Vedant Kesharia. Built with React, TypeScript, and Three.js.</p>
+          <p className="text-gray-400">
+            © 2024 Vedant Kesharia. Built with React, TypeScript, and Three.js.
+          </p>
         </div>
       </footer>
     </div>
-  )
-}
+  );
+};
 
-export default Portfolio
+export default Portfolio;
