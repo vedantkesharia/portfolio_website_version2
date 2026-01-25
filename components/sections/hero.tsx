@@ -30,15 +30,25 @@ export function HeroSection() {
       className="min-h-screen flex items-center justify-center relative overflow-hidden"
     >
       <AuroraBackground className="absolute inset-0" />
-      {/* Custom Cursor */}
+      {/* Custom Cursor with cursor glow only on medium and large devices*/}
       <div
-        className="fixed w-6 h-6 bg-white rounded-full pointer-events-none z-50 mix-blend-difference transition-transform duration-150 ease-out"
+        className="hidden md:block fixed w-6 h-6 bg-white rounded-full pointer-events-none z-50 mix-blend-difference transition-transform duration-150 ease-out"
         style={{
           left: mousePosition.x - 12,
           top: mousePosition.y - 12,
           transform: "scale(1.5)",
         }}
       />
+
+      {/* Custom Cursor with cursor glow only on all devices*/}
+      {/* <div
+        className="fixed w-6 h-6 bg-white rounded-full pointer-events-none z-50 mix-blend-difference transition-transform duration-150 ease-out"
+        style={{
+          left: mousePosition.x - 12,
+          top: mousePosition.y - 12,
+          transform: "scale(1.5)",
+        }}
+      /> */}
 
       {/* Background Effects */}
       <BackgroundBeams className="absolute inset-0" />
@@ -116,8 +126,6 @@ export function HeroSection() {
     </section>
   );
 }
-
-
 
 // "use client"
 // import { useState, useEffect } from "react"

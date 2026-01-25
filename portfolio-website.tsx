@@ -389,7 +389,6 @@ const Portfolio: React.FC = () => {
   return (
     <div className="bg-black text-white overflow-x-hidden">
       {/* Custom Cursor - only for medium to big screens */}
-
       <div
         className="hidden md:block fixed w-6 h-6 bg-white rounded-full pointer-events-none z-50 mix-blend-difference transition-transform duration-150 ease-out"
         style={{
