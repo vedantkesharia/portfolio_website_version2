@@ -352,7 +352,7 @@ export function AboutSection() {
 
   return (
     // <section ref={ref} id="about" className="py-32 relative overflow-hidden">
-    <section ref={ref} id="about" className="pt-20 relative overflow-hidden bg-gray-900/30">
+    <section ref={ref} id="about" className="pt-20 relative overflow-hidden bg-gray-900/50">
       {/* Base background gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-black via-gray-900/50 to-black pointer-events-none" />
 
