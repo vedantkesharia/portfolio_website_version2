@@ -351,7 +351,7 @@ export function AboutSection() {
   const staggerDelay = 0.05; // Very quick stagger between elements
 
   return (
-    <section ref={ref} id="about" className="pt-32 relative overflow-hidden bg-gray-900/30">
+    <section ref={ref} id="about" className="relative overflow-hidden bg-gray-900/30">
     {/* <section ref={ref} id="about" className="relative overflow-hidden bg-gray-900/50"> */}
       {/* Base background gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-gray-900/50 to-transparent pointer-events-none" />
@@ -366,7 +366,7 @@ export function AboutSection() {
           viewport={{ once: true, margin: "-100px" }}
           className="text-center mb-20"
         >
-          <h2 className="text-6xl font-light mb-6 bg-gradient-to-r from-white via-gray-200 to-gray-400 bg-clip-text text-transparent">
+          <h2 className="text-6xl font-light pt-24 mb-6 bg-gradient-to-r from-white via-gray-200 to-gray-400 bg-clip-text text-transparent">
             About Me
           </h2>
           <div className="w-64 h-px bg-gradient-to-r from-transparent via-white to-transparent mx-auto" />

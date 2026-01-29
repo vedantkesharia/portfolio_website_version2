@@ -27,7 +27,7 @@ export function HeroSection() {
   return (
     <section
       id="home"
-      className="min-h-screen flex items-center justify-center relative overflow-hidden"
+      className="pb-20 min-h-screen flex items-center justify-center relative overflow-hidden"
     >
       <AuroraBackground className="absolute inset-0" />
       {/* Custom Cursor with cursor glow only on medium and large devices*/}
