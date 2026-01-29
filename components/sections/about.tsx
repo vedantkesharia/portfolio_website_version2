@@ -691,7 +691,9 @@ export function AboutSection() {
           whileInView={{ opacity: 1, scaleX: 1 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true, margin: "-50px" }}
-          className="mt-20 pt-12 border-t border-gray-800"
+          // className="mt-20 pt-12 border-t border-gray-800"
+          className="mt-20 pt-12"
+
         >
           <div className="text-center">
             <p className="text-sm text-gray-500 uppercase tracking-widest">
