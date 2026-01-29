@@ -352,11 +352,11 @@ export function AboutSection() {
 
   return (
     // <section ref={ref} id="about" className="py-32 relative overflow-hidden">
-    <section ref={ref} id="about" className="mt-32 pt-2 relative overflow-hidden bg-gray-900/50">
+    <section ref={ref} id="about" className="relative overflow-hidden bg-gray-900/50">
       {/* Base background gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-black via-gray-900/50 to-black pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
+      <div className="mt-24 max-w-7xl mx-auto px-6 relative z-10">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
