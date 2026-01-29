@@ -354,7 +354,8 @@ export function AboutSection() {
     <section ref={ref} id="about" className="pt-32 relative overflow-hidden bg-gray-900/30">
     {/* <section ref={ref} id="about" className="relative overflow-hidden bg-gray-900/50"> */}
       {/* Base background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black via-gray-900/50 to-black pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-gray-900/50 to-transparent pointer-events-none" />
+      {/* <div className="absolute inset-0 bg-gradient-to-b from-black via-gray-900/50 to-black pointer-events-none" /> */}
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         {/* Header */}
