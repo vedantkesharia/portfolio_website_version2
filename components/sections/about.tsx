@@ -352,7 +352,7 @@ export function AboutSection() {
 
   return (
     // <section ref={ref} id="about" className="py-32 relative overflow-hidden">
-    <section ref={ref} id="about" className="pb-32 relative overflow-hidden bg-gray-900/30">
+    <section ref={ref} id="about" className="pt-20 relative overflow-hidden bg-gray-900/30">
       {/* Base background gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-black via-gray-900/50 to-black pointer-events-none" />
 
@@ -692,7 +692,7 @@ export function AboutSection() {
           whileInView={{ opacity: 1, scaleX: 1 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true, margin: "-50px" }}
-          className="mt-20 pt-12 border-t border-gray-800"
+          className="mt-20 pt-5 pb-10 border-t border-gray-800"
           // className="mt-20 pt-12"
 
         >
