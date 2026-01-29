@@ -27,7 +27,7 @@ export function HeroSection() {
   return (
     <section
       id="home"
-      className="pb-20 min-h-screen flex items-center justify-center relative overflow-hidden"
+      className="pb-8 min-h-screen flex items-center justify-center relative overflow-hidden"
     >
       <AuroraBackground className="absolute inset-0" />
       {/* Custom Cursor with cursor glow only on medium and large devices*/}
@@ -120,9 +120,9 @@ export function HeroSection() {
       </div>
 
       {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+      {/* <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
         <ChevronDown className="w-8 h-8 text-gray-400" />
-      </div>
+      </div> */}
     </section>
   );
 }

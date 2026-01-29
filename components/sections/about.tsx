@@ -70,7 +70,7 @@ export function AboutSection() {
             // Sum up bytes of code
             const repoBytes = Object.values(languages).reduce(
               (sum: number, bytes) => sum + (bytes as number),
-              0
+              0,
             );
 
             console.log(`${repo.name}: ${repoBytes} bytes`);
@@ -84,7 +84,7 @@ export function AboutSection() {
         const languageCounts = await Promise.all(languagePromises);
         const totalBytes = languageCounts.reduce(
           (sum, count) => sum + count,
-          0
+          0,
         );
 
         // More accurate conversion: average ~40 characters per line
@@ -111,13 +111,13 @@ export function AboutSection() {
                 // Find your contributions
                 const yourContributions = contributors.find(
                   (contributor: any) =>
-                    contributor.author?.login === "vedantkesharia"
+                    contributor.author?.login === "vedantkesharia",
                 );
 
                 if (yourContributions && yourContributions.weeks) {
                   const totalAdditions = yourContributions.weeks.reduce(
                     (sum: number, week: any) => sum + (week.a || 0),
-                    0
+                    0,
                   );
                   console.log(`${repo.name} additions: ${totalAdditions}`);
                   return totalAdditions;
@@ -133,14 +133,14 @@ export function AboutSection() {
           const statsResults = await Promise.all(statsPromises);
           alternativeLinesCount = statsResults.reduce(
             (sum, count) => sum + count,
-            0
+            0,
           );
 
           // Use the higher of the two estimates
           if (alternativeLinesCount > totalLinesOfCode) {
             totalLinesOfCode = alternativeLinesCount;
             console.log(
-              `Using contributor stats: ${alternativeLinesCount} lines`
+              `Using contributor stats: ${alternativeLinesCount} lines`,
             );
           }
         } catch (error) {
@@ -151,12 +151,12 @@ export function AboutSection() {
         if (totalLinesOfCode < 30000) {
           // Check if we have significant repositories that might be undercounted
           const significantRepos = repos.filter(
-            (repo) => (repo.size ?? 0) > 100
+            (repo) => (repo.size ?? 0) > 100,
           ); // repos > 100KB
           if (significantRepos.length > 10) {
             totalLinesOfCode = Math.floor(totalLinesOfCode * 1.5);
             console.log(
-              `Applied multiplier for significant repos: ${totalLinesOfCode}`
+              `Applied multiplier for significant repos: ${totalLinesOfCode}`,
             );
           }
         }
@@ -232,6 +232,7 @@ export function AboutSection() {
         try {
           // Try multiple LeetCode APIs for better reliability
           const leetcodeEndpoints = [
+            "https://alfa-leetcode-api.onrender.com/keshariavedant/solved",
             "https://leetcode-stats-api.herokuapp.com/keshariavedant",
             "https://leetcodestats.herokuapp.com/keshariavedant",
             "https://leetcode-api-faisalshohag.vercel.app/keshariavedant",
@@ -260,7 +261,7 @@ export function AboutSection() {
               } else {
                 console.log(
                   `Endpoint ${endpoint} returned status:`,
-                  leetcodeResponse.status
+                  leetcodeResponse.status,
                 );
               }
             } catch (endpointError) {
@@ -268,32 +269,66 @@ export function AboutSection() {
               continue; // Try next endpoint
             }
           }
-
           if (leetcodeData) {
-            // Try different possible property names
-            leetcodeSolved =
-              leetcodeData.totalSolved ||
-              leetcodeData.solved ||
-              leetcodeData.total_solved ||
-              leetcodeData.solvedProblem ||
-              leetcodeData.totalQuestions ||
-              (leetcodeData.easySolved || 0) +
+            // First check direct properties
+            if (leetcodeData.solvedProblem) {
+              leetcodeSolved = leetcodeData.solvedProblem;
+            } else if (leetcodeData.totalSolved) {
+              leetcodeSolved = leetcodeData.totalSolved;
+            } else if (leetcodeData.solved) {
+              leetcodeSolved = leetcodeData.solved;
+            } else if (leetcodeData.total_solved) {
+              leetcodeSolved = leetcodeData.total_solved;
+            } else if (leetcodeData.totalQuestions) {
+              leetcodeSolved = leetcodeData.totalQuestions;
+            } else if (
+              leetcodeData.easySolved ||
+              leetcodeData.mediumSolved ||
+              leetcodeData.hardSolved
+            ) {
+              // Try summing the difficulty levels
+              leetcodeSolved =
+                (leetcodeData.easySolved || 0) +
                 (leetcodeData.mediumSolved || 0) +
-                (leetcodeData.hardSolved || 0) ||
-              (leetcodeData.easy || 0) +
+                (leetcodeData.hardSolved || 0);
+            } else if (
+              leetcodeData.easy ||
+              leetcodeData.medium ||
+              leetcodeData.hard
+            ) {
+              leetcodeSolved =
+                (leetcodeData.easy || 0) +
                 (leetcodeData.medium || 0) +
-                (leetcodeData.hard || 0) ||
-              0;
+                (leetcodeData.hard || 0);
+            }
 
             console.log(`LeetCode problems solved: ${leetcodeSolved}`);
           }
+          // if (leetcodeData) {
+          //   // Try different possible property names
+          //   leetcodeSolved =
+          //     leetcodeData.totalSolved ||
+          //     leetcodeData.solved ||
+          //     leetcodeData.total_solved ||
+          //     leetcodeData.solvedProblem ||
+          //     leetcodeData.totalQuestions ||
+          //     (leetcodeData.easySolved || 0) +
+          //       (leetcodeData.mediumSolved || 0) +
+          //       (leetcodeData.hardSolved || 0) ||
+          //     (leetcodeData.easy || 0) +
+          //       (leetcodeData.medium || 0) +
+          //       (leetcodeData.hard || 0) ||
+          //     0;
+
+          //   console.log(`LeetCode problems solved: ${leetcodeSolved}`);
+          // }
 
           // If no API worked, try a direct fetch to your LeetCode profile
           if (leetcodeSolved === 0) {
             try {
               console.log("Trying alternative LeetCode API...");
               const altResponse = await fetch(
-                "https://alfa-leetcode-api.onrender.com/keshariavedant/solved"
+                "https://alfa-leetcode-api.onrender.com/keshariavedant/solved",
               );
               if (altResponse.ok) {
                 const altData = await altResponse.json();
@@ -327,10 +362,10 @@ export function AboutSection() {
         console.error("Error fetching GitHub stats:", error);
         // Fallback to mock data if API fails
         setGithubStats({
-          totalRepos: 42,
-          totalCommits: 1250,
-          totalLinesOfCode: 75000, // Increased fallback
-          leetcodeSolved: 150,
+          totalRepos: 71,
+          totalCommits: 785,
+          totalLinesOfCode: 575000, // Increased fallback
+          leetcodeSolved: 241,
           loading: false,
         });
       }
@@ -351,8 +386,12 @@ export function AboutSection() {
   const staggerDelay = 0.05; // Very quick stagger between elements
 
   return (
-    <section ref={ref} id="about" className="relative overflow-hidden bg-gray-900/30">
-    {/* <section ref={ref} id="about" className="relative overflow-hidden bg-gray-900/50"> */}
+    <section
+      ref={ref}
+      id="about"
+      className="relative overflow-hidden bg-gray-900/30"
+    >
+      {/* <section ref={ref} id="about" className="relative overflow-hidden bg-gray-900/50"> */}
       {/* Base background gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-gray-900/50 to-transparent pointer-events-none" />
       {/* <div className="absolute inset-0 bg-gradient-to-b from-black via-gray-900/50 to-black pointer-events-none" /> */}
@@ -448,7 +487,7 @@ export function AboutSection() {
                     onClick={() =>
                       window.open(
                         "https://drive.google.com/file/d/19bceCdlZaAh3l5y6ir7KcwaKkutvaxD6/view?usp=sharing",
-                        "_blank"
+                        "_blank",
                       )
                     }
                   >
@@ -695,7 +734,6 @@ export function AboutSection() {
           viewport={{ once: true, margin: "-50px" }}
           className="mt-20 pt-5 pb-10 border-t border-gray-800"
           // className="mt-20 pt-12"
-
         >
           <div className="text-center">
             <p className="text-sm text-gray-500 uppercase tracking-widest">
@@ -707,6 +745,10 @@ export function AboutSection() {
     </section>
   );
 }
+
+
+
+
 
 //works but issue in line of code
 // "use client";
