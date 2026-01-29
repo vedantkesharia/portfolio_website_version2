@@ -351,7 +351,8 @@ export function AboutSection() {
   const staggerDelay = 0.05; // Very quick stagger between elements
 
   return (
-    <section ref={ref} id="about" className="py-32 relative overflow-hidden">
+    // <section ref={ref} id="about" className="py-32 relative overflow-hidden">
+    <section ref={ref} id="about" className="py-32 relative overflow-hidden bg-gray-900/30">
       {/* Base background gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-black via-gray-900/50 to-black pointer-events-none" />
 
@@ -691,8 +692,8 @@ export function AboutSection() {
           whileInView={{ opacity: 1, scaleX: 1 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true, margin: "-50px" }}
-          // className="mt-20 pt-12 border-t border-gray-800"
-          className="mt-20 pt-12"
+          className="mt-20 pt-12 border-t border-gray-800"
+          // className="mt-20 pt-12"
 
         >
           <div className="text-center">
