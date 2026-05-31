@@ -3,6 +3,17 @@ import { Timeline } from "@/components/ui/timeline"
 
 const workExperience = [
   {
+    title: "Software Development Engineer Intern",
+    company: "Amazon",
+    period: "May 2026 - Present",
+    location: "Bellevue, WA, USA",
+    description: [
+      "Developing Java-based backend services and REST APIs on AWS for Alexa, implementing business logic, service orchestration workflows, and cloud-native microservice functionality for customer-facing applications",
+      "Building and integrating backend components across AWS-powered systems, contributing to API development, deployment automation, and scalable service infrastructure within a large-scale production environment",
+    ],
+    technologies: ["Java", "AWS", "REST APIs", "Microservices", "Alexa"],
+  },
+  {
     title: "AI/ML Research Intern",
     company: "University of Southern California (USC)",
     period: "January 2025 - April 2025",

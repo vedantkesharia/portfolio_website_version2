@@ -10,6 +10,7 @@ const researchPapers = [
       "International journal Educational Administration: Theory and Practice",
     status: "Published",
     year: "2024",
+    doi: "https://doi.org/10.53555/kuey.v30i5.8347",
     description:
       "Built a multilingual voice assistant for the visually impaired with personalized content delivery using ML and NLP.",
     tech: [
@@ -24,9 +25,10 @@ const researchPapers = [
     title:
       "Detection of Fake Online Products Using Unsupervised GAN with Grad-CAM Visualization",
     journal:
-      "Presented at BIDA 2025; to be published in Springer’s “Smart Innovation, Systems and Technologies” series.",
-    status: "Presented",
+      "BIDA 2025, Springer",
+    status: "Published",
     year: "2025",
+    doi: "https://doi.org/10.1007/978-3-032-07837-7_3",
     description:
       "Developed a GAN-based framework with Grad-CAM to detect fake online products, achieving high accuracy and explainability.",
     tech: ["GANs", "Computer Vision", "Grad-CAM", "Explainable AI"],
@@ -74,20 +76,21 @@ const researchPapers = [
   {
     title:
       "Optimized ECG-Based Detection of Hypertensive Heart Disease Using Federated Machine Learning",
-    journal: "5th IEEE ASIANCON 2025",
-    status: "Accepted",
-    year: "2025",
+    journal: "IEEE I3CTCON 2026",
+    status: "Published",
+    year: "2026",
+    doi: "https://doi.org/10.1109/I3CTCON68242.2026.11507264",
     description:
       "Federated machine learning approach for ECG-based hypertensive heart disease detection.",
     tech: ["Federated Learning", "ECG Analysis", "Healthcare AI"],
   },
   {
     title:
-      "Enhancing Hypertensive Heart Disease Detection Through ECG Signal Optimization",
-    journal:
-      "2nd International Conference on Sustainable Computing and Intelligent Systems (ICCIS 2025)",
-    status: "Presented",
+      "ECG Image Digitization and Classification for Cardiac Abnormality Detection",
+    journal: "Springer",
+    status: "Published",
     year: "2025",
+    doi: "https://doi.org/10.1007/978-3-032-22908-3_9",
     description:
       "Developed an image-to-signal ECG pipeline using ML/DL for automated hypertensive heart disease detection from paper-based records.",
     tech: [
@@ -147,7 +150,18 @@ export function ResearchSection() {
                 {paper.title}
               </h3>
               <p className="text-sm text-gray-400 mb-3 italic">
-                {paper.journal}
+                {paper.doi ? (
+                  <a
+                    href={paper.doi}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="underline underline-offset-2 hover:text-gray-300 transition-colors duration-300"
+                  >
+                    {paper.journal}
+                  </a>
+                ) : (
+                  paper.journal
+                )}
               </p>
               <p className="text-sm text-gray-300 mb-4 leading-relaxed">
                 {paper.description}
