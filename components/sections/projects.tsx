@@ -19,6 +19,16 @@ const allProjects = [
     githubLink: "https://drive.google.com/file/d/1MWQW0wXRw5sfWMICjcdD-JLMR9uPHcc2/view?usp=sharing",
   },
   {
+    title: "ChronoBase",
+    description:
+      "Full-stack database versioning and governance platform with immutable snapshot pipelines, branching & merging, DB migrations, PII masking. Deployed on AWS (EKS, S3, SQS, EC2).",
+    tech: ["React", "Node.js", "Express", "MongoDB", "AWS", "Kubernetes", "Docker", "EventBridge", "SHA-256", "RBAC"],
+    image: "/img/chronobase_img.png",
+    achievement: "",
+    demoLink: "https://drive.google.com/file/d/1KY_cL-3I5y4F_2UVVJ2et3itM5-BzVHp/view?usp=sharing",
+    githubLink: "https://github.com/vedantkesharia/ChronoBase",
+  },
+  {
     title: "EcoCarrier",
     description:
       "Smart India Hackathon 2024 Finalist. Comprehensive ESG platform with IoT leak detection, MERN stack, Flutter app, and multilingual RAG chatbot.",
