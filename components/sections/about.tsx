@@ -644,7 +644,7 @@ export function AboutSection() {
                         <div className="flex items-center gap-2">
                           <div className="w-2 h-2 rounded-full bg-white/60 group-hover:bg-white/80 transition-all duration-300"></div>
                           <p className="text-gray-300 text-sm font-medium group-hover:text-gray-200 transition-colors duration-300">
-                            MS Computer Science • University of Colorado Boulder
+                            MS Computer Science • University of Colorado Boulder • 3.71 GPA
                           </p>
                         </div>
                         <div className="flex items-center gap-2">
