@@ -78,7 +78,7 @@ export function HeroSection() {
             </span>
           </h1>
           <h2 className="text-2xl md:text-3xl text-gray-300 font-light mb-8">
-            Full-Stack AI Engineer & Researcher
+            Software Engineer & AI Systems Engineer
           </h2>
           <TextGenerateEffect
             words="Building intelligent systems with cutting-edge AI/ML, full-stack development, and DevOps expertise"
