@@ -5,13 +5,13 @@ const workExperience = [
   {
     title: "Software Development Engineer Intern",
     company: "Amazon",
-    period: "May 2026 - Present",
+    period: "May 2026 - August 2026",
     location: "Bellevue, WA, USA",
     description: [
-      "Developing Java-based backend services and REST APIs on AWS for Alexa, implementing business logic, service orchestration workflows, and cloud-native microservice functionality for customer-facing applications",
-      "Building and integrating backend components across AWS-powered systems, contributing to API development, deployment automation, and scalable service infrastructure within a large-scale production environment",
+      "Engineered scalable Java-based microservices and APIs on AWS for Alexa+ food ordering, implementing business logic and third-party integrations,shipped production features across multiple regions with CI/CD pipelines, automated testing, and CloudWatch-based observability.",
+      "Optimized distributed backend request processing through caching and concurrent service calls, reducing repeated-query latency by 78% (900 ms to 200 ms), while migrating legacy food-ordering workflows into a consolidated, team-owned production architecture. ",
     ],
-    technologies: ["Java", "AWS", "REST APIs", "Microservices", "Alexa"],
+    technologies: ["Java", "AWS", "Microservices", "TypeScript", "CI/CD", "Alexa"],
   },
   {
     title: "AI/ML Research Intern",
@@ -63,7 +63,7 @@ const workExperience = [
     technologies: ["LangChain", "Autogen", "CrewAI", "Azure", "OpenAI", "RAG", "OCR", "Python"],
   },
   {
-    title: "Web Development Intern",
+    title: "Software Development Engineer Intern",
     company: "Centre for Development of Advanced Computing (CDAC)",
     period: "December 2023 - May 2024",
     location: "Mumbai, India",
