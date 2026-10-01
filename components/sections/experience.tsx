@@ -3,6 +3,17 @@ import { Timeline } from "@/components/ui/timeline"
 
 const workExperience = [
   {
+    title: "Software Development Engineer",
+    company: "Hewlett Packard Enterprise (HPE) - Capstone",
+    period: "September 2026 - Present",
+    location: "Capstone Project",
+    description: [
+      "Developing a Payment Gateway API that collects, verifies, encrypts, and transmits payment requests to a payment processor, routing REST requests to Java-based microservices running on a NonStop load balancer.",
+      "Implementing Authorization, Clearing, Settlement, and Reporting/Analytics microservices using NonStop SQL/MX with Hibernate/JDBC, targeting 10K requests per second with load-based service scaling, DoS attack handling, and fault tolerance.",
+    ],
+    technologies: ["Java", "REST APIs", "NonStop SQL/MX", "Hibernate", "JDBC", "Payment Gateway", "Microservices"],
+  },
+  {
     title: "Software Development Engineer Intern",
     company: "Amazon",
     period: "May 2026 - August 2026",
