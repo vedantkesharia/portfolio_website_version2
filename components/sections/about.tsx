@@ -486,7 +486,7 @@ export function AboutSection() {
                     className="relative z-20 px-10 py-4 bg-white text-black font-medium rounded-sm transition-all duration-300 hover:bg-gray-100 hover:shadow-lg hover:transform hover:-translate-y-1 hover:scale-105 cursor-pointer"
                     onClick={() =>
                       window.open(
-                        "https://drive.google.com/file/d/19bceCdlZaAh3l5y6ir7KcwaKkutvaxD6/view?usp=sharing",
+                        "https://drive.google.com/file/d/12zuljFf2bngUrKMhlYRfaBKzvFYVVtK0/view",
                         "_blank",
                       )
                     }
